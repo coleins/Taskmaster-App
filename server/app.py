@@ -1,23 +1,22 @@
-#!/usr/bin/env python3
+from flask import Flask
+from flask_migrate import Migrate
+from db import db  # Importing from the separate db module
+from models import User, Task, Comment  # Import models to register them
 
-# Standard library imports
+app = Flask(__name__)
 
-# Remote library imports
-from flask import request
-from flask_restful import Resource
+# Configuration
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# Local imports
-from config import app, db, api
-# Add your model imports
+# Initialize extensions
+db.init_app(app)
+migrate = Migrate(app, db)
 
-
-# Views go here!
-
+# Define a simple route
 @app.route('/')
-def index():
-    return '<h1>Project Server</h1>'
-
+def home():
+    return "Hello, Flask is running!"
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
-
