@@ -3,19 +3,29 @@ from flask import Flask, request, jsonify
 from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager, create_access_token, get_jwt_identity, jwt_required, get_jwt
-from datetime import timedelta
+from datetime import timedelta, datetime
 from flask_cors import CORS
 from models import db, User, Task, Comment
 import logging
+from flask_restful import Api
+import os
+
+
+
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+DATABASE = os.environ.get("DB_URI", f"sqlite:///{os.path.join(BASE_DIR, 'app.db')}")
+
 
 app = Flask(__name__)
 CORS(app)
 
 # Configuration
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///app.db"  # Updated database name
-app.config["JWT_SECRET_KEY"] = "fsbdgfnhgvjnvhmvh" + str(random.randint(1, 1000000000000))
-app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(days=1)
-app.config["SECRET_KEY"] = "JKSRVHJVFBSRDFV" + str(random.randint(1, 1000000000000))
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///app.db"  #database name
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config["JWT_SECRET_KEY"] = "fsbdgfnhgvjnvhmvh" + str(random.randint(1, 1000000000000)) # Setup the Flask-JWT-Extended extension
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(days=1) # token expiry
+app.json.compact= False
+app.config["SECRET_KEY"] = "JKSRVHJVFBSRDFV" + str(random.randint(1, 1000000000000)) #signing cookies for integrity and security
 
 # Initialize extensions
 bcrypt = Bcrypt(app)
@@ -23,6 +33,7 @@ jwt = JWTManager(app)
 migrate = Migrate(app, db)
 db.init_app(app)
 
+api = Api(app)
 # Configure logging
 logging.basicConfig(filename='app.log', level=logging.INFO)
 
@@ -110,10 +121,17 @@ def update_user(user_id):
     user = User.query.get_or_404(user_id)
     data = request.get_json()
 
-    user.username = data['username']
-    user.email = data['email']
+    if 'username' in data:
+        user.username = data['username']
+    if 'email' in data:
+        user.email = data['email']
+    if 'password' in data:
+        user.password = bcrypt.generate_password_hash(data['password']).decode("utf-8")
+        
     db.session.commit()
     return jsonify({'message': 'User updated successfully'})
+
+
 
 @app.route('/users', methods=['GET'])
 def list_users():
@@ -121,16 +139,34 @@ def list_users():
     users_data = [{'id': user.id, 'username': user.username, 'email': user.email} for user in users]
     return jsonify(users_data)
 
+@app.route('/users/<int:user_id>', methods=['DELETE'])
+@jwt_required()
+def delete_user(user_id):
+    user = User.query.get_or_404(user_id)
+    db.session.delete(user)
+    db.session.commit()
+    return jsonify({'message': 'User deleted successfully'}), 200
+
+
 # Task Management
 @app.route('/tasks', methods=['POST'])
 @jwt_required()
 def create_task():
     data = request.get_json()
     current_user_id = get_jwt_identity()
+
+    # Parse the due_date string into a datetime object
+    due_date = None
+    if 'due_date' in data:
+        try:
+            due_date = datetime.fromisoformat(data['due_date'])
+        except ValueError:
+            return jsonify({'message': 'Invalid due_date format'}), 400
+
     new_task = Task(
         title=data['title'],
-        description=data['description'],
-        due_date=data.get('due_date'),
+        description=data.get('description'),
+        due_date=due_date,
         priority=data.get('priority'),
         status=data.get('status', 'pending'),
         user_id=current_user_id
@@ -175,19 +211,27 @@ def get_tasks():
         'current_page': tasks.page
     })
 
+
 @app.route('/tasks/<int:task_id>', methods=['PUT'])
 @jwt_required()
 def update_task(task_id):
     task = Task.query.get_or_404(task_id)
     data = request.get_json()
 
-    task.title = data['title']
-    task.description = data.get('description')
-    task.due_date = data.get('due_date')
-    task.priority = data.get('priority')
-    task.status = data.get('status', task.status)
+    if 'title' in data:
+        task.title = data['title']
+    if 'description' in data:
+        task.description = data['description']
+    if 'due_date' in data:
+        task.due_date = datetime.strptime(data['due_date'], '%Y-%m-%dT%H:%M:%S')
+    if 'priority' in data:
+        task.priority = data['priority']
+    if 'status' in data:
+        task.status = data['status']
+
     db.session.commit()
     return jsonify({'message': 'Task updated successfully'})
+
 
 @app.route('/tasks/<int:task_id>', methods=['DELETE'])
 @jwt_required()
@@ -195,12 +239,73 @@ def delete_task(task_id):
     task = Task.query.get_or_404(task_id)
     db.session.delete(task)
     db.session.commit()
-    return jsonify({'message': 'Task deleted successfully'})
+
+# Comment Management
+
+@app.route('/tasks/<int:task_id>/comments', methods=['POST'])
+@jwt_required()
+def create_comment(task_id):
+    data = request.get_json()
+    current_user_id = get_jwt_identity()
+
+    new_comment = Comment(
+        content=data['content'],
+        task_id=task_id,
+        user_id=current_user_id
+    )
+    db.session.add(new_comment)
+    db.session.commit()
+    return jsonify({'message': 'Comment created successfully'}), 201
+
+@app.route('/tasks/<int:task_id>/comments', methods=['GET'])
+def get_comments(task_id):
+    comments = Comment.query.filter_by(task_id=task_id).all()
+    comments_data = [
+        {
+            'id': comment.id,
+            'content': comment.content,
+            'timestamp': comment.timestamp,
+            'task_id': comment.task_id,
+            'user_id': comment.user_id
+        }
+        for comment in comments
+    ]
+    return jsonify(comments_data), 200
+
+@app.route('/comments/<int:comment_id>', methods=['PUT'])
+@jwt_required()
+def update_comment(comment_id):
+    comment = Comment.query.get_or_404(comment_id)
+    data = request.get_json()
+    current_user_id = get_jwt_identity()
+
+    if comment.user_id != current_user_id:
+        return jsonify({'message': 'Permission denied'}), 403
+
+    if 'content' in data:
+        comment.content = data['content']
+        
+    db.session.commit()
+    return jsonify({'message': 'Comment updated successfully'}), 200
+
+@app.route('/comments/<int:comment_id>', methods=['DELETE'])
+@jwt_required()
+def delete_comment(comment_id):
+    comment = Comment.query.get_or_404(comment_id)
+    current_user_id = get_jwt_identity()
+
+    if comment.user_id != current_user_id:
+        return jsonify({'message': 'Permission denied'}), 403
+
+    db.session.delete(comment)
+    db.session.commit()
+    return jsonify({'message': 'Comment deleted successfully'}), 200
+
 
 # Define a simple route
 @app.route('/')
-def home():
-    return "Hello, Flask is running!"
+def index():
+    return "<h2>Hello, Flask is running!</h2>"
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run(port=5555, debug=True)
