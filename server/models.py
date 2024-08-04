@@ -71,12 +71,19 @@ class Task(db.Model, SerializerMixin):
         if not title:
             raise ValueError("Title is required")
         return title
+    
+    @validates('priority')
+    def validate_priority(self, key, priority):
+        if priority not in ['high', 'medium', 'low']:
+            raise ValueError("Invalid priority")
+        return priority
 
     @validates('status')
     def validate_status(self, key, status):
         if status not in ['pending', 'in_progress', 'completed']:
             raise ValueError("Invalid status")
         return status
+    
 
     def __repr__(self):
         return f"<Task {self.title}>"
