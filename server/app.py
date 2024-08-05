@@ -1,4 +1,5 @@
 import random
+import os
 from flask import Flask, request, jsonify
 from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
@@ -8,24 +9,23 @@ from flask_cors import CORS
 from models import db, User, Task, Comment
 import logging
 from flask_restful import Api
-import os
+from dotenv import load_dotenv
 
-
-
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-DATABASE = os.environ.get("DB_URI", f"sqlite:///{os.path.join(BASE_DIR, 'app.db')}")
-
+# Load environment variables from .env file
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
 
+
+
 # Configuration
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///app.db"  #database name
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URI", "sqlite:///app.db")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config["JWT_SECRET_KEY"] = "fsbdgfnhgvjnvhmvh" + str(random.randint(1, 1000000000000)) # Setup the Flask-JWT-Extended extension
-app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(days=1) # token expiry
-app.json.compact= False
-app.config["SECRET_KEY"] = "JKSRVHJVFBSRDFV" + str(random.randint(1, 1000000000000)) #signing cookies for integrity and security
+app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY", "fsbdgfnhgvjnvhmvh" + str(random.randint(1, 1000000000000)))
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(days=int(os.getenv("JWT_ACCESS_TOKEN_EXPIRES", 1)))
+app.json.compact = False
+app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "JKSRVHJVFBSRDFV" + str(random.randint(1, 1000000000000)))
 
 # Initialize extensions
 bcrypt = Bcrypt(app)
@@ -60,6 +60,10 @@ def internal_error(error):
 def bad_request(error):
     return jsonify({"message": "Bad request"}), 400
 
+# Set debug mode from environment variable
+app.debug = bool(os.getenv("FLASK_DEBUG", 0))
+
+
 # JWT Blacklist
 BLACKLIST = set()
 
@@ -67,6 +71,8 @@ BLACKLIST = set()
 def check_if_token_in_blocklist(jwt_header, decrypted_token):
     return decrypted_token['jti'] in BLACKLIST
 
+
+# routes
 # User Management
 @app.route("/login", methods=["POST"])
 def login():
