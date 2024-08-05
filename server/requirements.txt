@@ -33,3 +33,5 @@ typing_extensions==4.12.2
 virtualenv==20.25.1
 Werkzeug==3.0.3
 zipp==3.19.2
+gunicorn
+python-dotenv==0.20.0
