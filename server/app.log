@@ -58,3 +58,105 @@ INFO:werkzeug:127.0.0.1 - - [05/Aug/2024 12:54:12] "GET /tasks HTTP/1.1" 200 -
 INFO:root:Request: GET http://127.0.0.1:5555/users
 INFO:root:Response: 200 OK b'[\n  {\n    "email": "johndoe@gmail.com",\n    "id": 1,\n    "username": "johndoe"\n  },\n  {\n    "email": "janedoe@gmail.com",\n    "id": 2,\n    "username": "janedoe"\n  }\n]\n'
 INFO:werkzeug:127.0.0.1 - - [05/Aug/2024 12:54:21] "GET /users HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5555
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 110-027-941
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5555
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 110-027-941
+INFO:root:Request: GET http://127.0.0.1:5555/
+INFO:root:Response: 200 OK b'<h2>Hello, Flask is running!</h2>'
+INFO:werkzeug:127.0.0.1 - - [05/Aug/2024 16:16:32] "GET / HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/tasks
+INFO:werkzeug:127.0.0.1 - - [05/Aug/2024 16:16:41] "[35m[1mGET /tasks HTTP/1.1[0m" 500 -
+INFO:root:Request: GET http://127.0.0.1:5555/tasks
+INFO:werkzeug:127.0.0.1 - - [05/Aug/2024 16:16:42] "[35m[1mGET /tasks HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [05/Aug/2024 16:16:42] "[36mGET /tasks?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Aug/2024 16:16:42] "[36mGET /tasks?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Aug/2024 16:16:43] "[36mGET /tasks?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Aug/2024 16:16:44] "[36mGET /tasks?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5555
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 110-027-941
+INFO:root:Request: GET http://127.0.0.1:5555/
+INFO:root:Response: 200 OK b'<h2>Hello, Flask is running!</h2>'
+INFO:werkzeug:127.0.0.1 - - [05/Aug/2024 16:17:16] "GET / HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/tasks
+INFO:root:Response: 200 OK b'{\n  "current_page": 1,\n  "pages": 0,\n  "tasks": [],\n  "total": 0\n}\n'
+INFO:werkzeug:127.0.0.1 - - [05/Aug/2024 16:17:19] "GET /tasks HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/users
+INFO:root:Response: 200 OK b'[]\n'
+INFO:werkzeug:127.0.0.1 - - [05/Aug/2024 16:17:21] "GET /users HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/manuel/Work/project/TaskMaster-App-Capstone-Project/server/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 110-027-941
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5555
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 110-027-941
+INFO:root:Request: GET http://127.0.0.1:5555/tasks
+INFO:root:Response: 200 OK b'{\n  "current_page": 1,\n  "pages": 0,\n  "tasks": [],\n  "total": 0\n}\n'
+INFO:werkzeug:127.0.0.1 - - [05/Aug/2024 16:25:51] "GET /tasks HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/manuel/Work/project/TaskMaster-App-Capstone-Project/server/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 110-027-941
+INFO:werkzeug: * Detected change in '/home/manuel/Work/project/TaskMaster-App-Capstone-Project/server/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 110-027-941
+INFO:werkzeug: * Detected change in '/home/manuel/Work/project/TaskMaster-App-Capstone-Project/server/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 110-027-941
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5555
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 110-027-941
+INFO:root:Request: GET http://127.0.0.1:5555/
+INFO:root:Response: 200 OK b'<h2>Hello, Flask is running!</h2>'
+INFO:werkzeug:127.0.0.1 - - [05/Aug/2024 16:34:37] "GET / HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/users
+INFO:root:Response: 200 OK b'[]\n'
+INFO:werkzeug:127.0.0.1 - - [05/Aug/2024 16:35:05] "GET /users HTTP/1.1" 200 -
+INFO:root:Request: POST http://127.0.0.1:5555/users
+INFO:root:Response: 201 CREATED b'{\n  "success": "User created successfully"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [05/Aug/2024 16:36:27] "[35m[1mPOST /users HTTP/1.1[0m" 201 -
+INFO:root:Request: POST http://127.0.0.1:5555/login
+INFO:root:Response: 200 OK b'{\n  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyMjg2NTAzNiwianRpIjoiMjAzNDRmZDMtZmExMS00MGIxLWI2NmItN2U4NDY0OTQ0OTA4IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzIyODY1MDM2LCJjc3JmIjoiZmNmMzFlZmItNDEyZi00Y2JjLThjMGQtMGJmOTIyZGY5NWQ2IiwiZXhwIjoxNzIyOTUxNDM2fQ.X5fHhIl0X1GMnJFlgfkjoVD36ylYNwr0ZxgjbbUwc3A"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [05/Aug/2024 16:37:16] "POST /login HTTP/1.1" 200 -
+INFO:root:Request: PUT http://127.0.0.1:5555/users/1
+INFO:root:Response: 200 OK b'{\n  "message": "User updated successfully"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [05/Aug/2024 16:38:45] "PUT /users/1 HTTP/1.1" 200 -
+INFO:root:Request: PUT http://127.0.0.1:5555/login
+INFO:root:Response: 405 METHOD NOT ALLOWED b'<!doctype html>\n<html lang=en>\n<title>405 Method Not Allowed</title>\n<h1>Method Not Allowed</h1>\n<p>The method is not allowed for the requested URL.</p>\n'
+INFO:werkzeug:127.0.0.1 - - [05/Aug/2024 16:39:22] "[31m[1mPUT /login HTTP/1.1[0m" 405 -
+INFO:root:Request: POST http://127.0.0.1:5555/login
+INFO:root:Response: 401 UNAUTHORIZED b'{\n  "message": "Invalid email or password"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [05/Aug/2024 16:39:27] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+INFO:root:Request: POST http://127.0.0.1:5555/login
+INFO:root:Response: 200 OK b'{\n  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyMjg2NTE3NSwianRpIjoiZWQ5NDEyNDMtN2RiZi00YjdmLWIwZTItMWJkNGQ0NTVkNjZmIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzIyODY1MTc1LCJjc3JmIjoiNTdlZmQ3YjUtN2E4MC00YzQ5LWE0MDctOWYzNmU0M2E3NTEyIiwiZXhwIjoxNzIyOTUxNTc1fQ.LO6eAqzZN25QEwmoorevGa777KSAAT-mcK4HZc-lV2w"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [05/Aug/2024 16:39:35] "POST /login HTTP/1.1" 200 -
+INFO:root:Request: POST http://127.0.0.1:5555/login
+INFO:root:Response: 200 OK b'{\n  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyMjg2NTI4NiwianRpIjoiZThkNmRhZmUtY2Q1ZC00NjZiLTk0NzMtYzE1ZWMzMmY2NmE3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzIyODY1Mjg2LCJjc3JmIjoiNWQyYTZiYmEtMTBiOC00MjY3LWI4YTgtNzIzYzk2OGEyZmI0IiwiZXhwIjoxNzIyOTUxNjg2fQ.-DREbUquwCfbdbcF4XexP0Miwe-UzQhl8Gl_HiFT-HQ"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [05/Aug/2024 16:41:26] "POST /login HTTP/1.1" 200 -
+INFO:root:Request: DELETE http://127.0.0.1:5555/users/1
+INFO:root:Response: 200 OK b'{\n  "message": "User deleted successfully"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [05/Aug/2024 16:41:48] "DELETE /users/1 HTTP/1.1" 200 -
+INFO:root:Request: POST http://127.0.0.1:5555/users
+INFO:root:Response: 201 CREATED b'{\n  "success": "User created successfully"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [05/Aug/2024 16:42:48] "[35m[1mPOST /users HTTP/1.1[0m" 201 -
