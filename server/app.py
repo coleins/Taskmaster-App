@@ -69,6 +69,8 @@ BLACKLIST = set()
 def check_if_token_in_blocklist(jwt_header, decrypted_token):
     return decrypted_token['jti'] in BLACKLIST
 
+
+# routes
 # User Management
 @app.route("/login", methods=["POST"])
 def login():
