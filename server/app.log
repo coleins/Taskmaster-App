@@ -172,3 +172,12 @@ INFO:werkzeug:127.0.0.1 - - [05/Aug/2024 18:45:07] "GET / HTTP/1.1" 200 -
 INFO:root:Request: GET http://127.0.0.1:5555/tasks
 INFO:root:Response: 200 OK b'{\n  "current_page": 1,\n  "pages": 0,\n  "tasks": [],\n  "total": 0\n}\n'
 INFO:werkzeug:127.0.0.1 - - [05/Aug/2024 18:45:11] "GET /tasks HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5555
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 110-027-941
+INFO:root:Request: GET http://127.0.0.1:5555/
+INFO:root:Response: 200 OK b'<h2>Hello, Flask is running!</h2>'
+INFO:werkzeug:127.0.0.1 - - [05/Aug/2024 19:06:59] "GET / HTTP/1.1" 200 -
