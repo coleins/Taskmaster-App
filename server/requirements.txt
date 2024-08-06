@@ -48,4 +48,4 @@ werkzeug==2.2.2; python_version >= '3.7'
 zipp==3.19.2; python_version >= '3.8'
 Flask-Bcrypt==1.0.1
 python-dotenv==0.20.0
-psycopg2-binary==2.9.7
+
