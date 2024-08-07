@@ -201,3 +201,7 @@ INFO:werkzeug:127.0.0.1 - - [04/Aug/2024 23:40:06] "GET /users?__debugger__=yes&
 INFO:werkzeug:127.0.0.1 - - [04/Aug/2024 23:40:07] "[36mGET /users?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
 ERROR:flask_migrate:Error: Directory migrations already exists and is not empty
 ERROR:flask_migrate:Error: Directory migrations already exists and is not empty
+INFO:root:Request: GET http://127.0.0.1:8000/
+INFO:root:Response: 200 OK b'<h2>Hello, Flask is running!</h2>'
+INFO:root:Request: GET http://127.0.0.1:8000/favicon.ico
+INFO:root:Response: 404 NOT FOUND b'{\n  "message": "Resource not found"\n}\n'
