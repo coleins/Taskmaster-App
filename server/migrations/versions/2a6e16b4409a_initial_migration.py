@@ -1,8 +1,8 @@
-"""creates table taskmaster
+"""initial migration
 
-Revision ID: 756e39f40ebf
+Revision ID: 2a6e16b4409a
 Revises: 
-Create Date: 2024-08-07 14:54:57.421856
+Create Date: 2024-08-07 15:21:43.239104
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '756e39f40ebf'
+revision = '2a6e16b4409a'
 down_revision = None
 branch_labels = None
 depends_on = None
