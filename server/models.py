@@ -30,6 +30,10 @@ class User(db.Model, SerializerMixin):
     comments = db.relationship(
         'Comment', backref='user', lazy=True, cascade='all, delete-orphan'
     )
+    dashboards = db.relationship(
+        'Dashboard', backref='owner', lazy=True, cascade='all, delete-orphan'
+    )
+    assigned_tasks = db.relationship('Task', secondary='task_assignees', backref='assignees')
 
     @validates('email')
     def validate_email(self, key, email):
@@ -48,8 +52,26 @@ class User(db.Model, SerializerMixin):
             raise ValueError("Username already exists")
         return username
 
-    def __repr__(self):
+    def _repr_(self):
         return f"<User {self.username}>"
+
+class Dashboard(db.Model, SerializerMixin):
+    __tablename__ = 'dashboards'
+    id = db.Column(db.Integer, primary_key=True)
+    project_name = db.Column(db.String(150), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    tasks = db.relationship(
+        'Task', backref='dashboard', lazy=True, cascade='all, delete-orphan'
+    )
+
+    @validates('project_name')
+    def validate_project_name(self, key, project_name):
+        if not project_name:
+            raise ValueError("Project name is required")
+        return project_name
+
+    def _repr_(self):
+        return f"<Dashboard {self.project_name}>"
 
 class Task(db.Model, SerializerMixin):
     __tablename__ = 'tasks'
@@ -60,6 +82,7 @@ class Task(db.Model, SerializerMixin):
     priority = db.Column(db.String(50), nullable=True)
     status = db.Column(db.String(50), nullable=True, default='pending')
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    dashboard_id = db.Column(db.Integer, db.ForeignKey('dashboards.id'), nullable=False)
     created_at = db.Column(DateTime, server_default=db.func.now())
     updated_at = db.Column(DateTime, onupdate=db.func.now())
     comments = db.relationship(
@@ -83,9 +106,8 @@ class Task(db.Model, SerializerMixin):
         if status not in ['pending', 'in_progress', 'completed']:
             raise ValueError("Invalid status")
         return status
-    
 
-    def __repr__(self):
+    def _repr_(self):
         return f"<Task {self.title}>"
 
 class Comment(db.Model, SerializerMixin):
@@ -104,5 +126,11 @@ class Comment(db.Model, SerializerMixin):
             raise ValueError("Content is required")
         return content
 
-    def __repr__(self):
+    def _repr_(self):
         return f"<Comment {self.content[:20]}>"
+
+# Association table for task assignees
+task_assignees = db.Table('task_assignees',
+    db.Column('task_id', db.Integer, db.ForeignKey('tasks.id'), primary_key=True),
+    db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
+)
