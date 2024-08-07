@@ -6,7 +6,7 @@ from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager, create_access_token, get_jwt_identity, jwt_required, get_jwt
 from datetime import timedelta, datetime
 from flask_cors import CORS
-from models import db, User, Task, Comment
+from models import db, User, Task, Comment, Dashboard
 import logging
 from flask_restful import Api
 from dotenv import load_dotenv
@@ -16,8 +16,6 @@ load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
-
-
 
 # Configuration
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URI", "sqlite:///app.db")
@@ -34,6 +32,7 @@ migrate = Migrate(app, db)
 db.init_app(app)
 
 api = Api(app)
+
 # Configure logging
 logging.basicConfig(filename='app.log', level=logging.INFO)
 
@@ -63,7 +62,6 @@ def bad_request(error):
 # Set debug mode from environment variable
 app.debug = bool(os.getenv("FLASK_DEBUG", 0))
 
-
 # JWT Blacklist
 BLACKLIST = set()
 
@@ -71,8 +69,6 @@ BLACKLIST = set()
 def check_if_token_in_blocklist(jwt_header, decrypted_token):
     return decrypted_token['jti'] in BLACKLIST
 
-
-# routes
 # User Management
 @app.route("/login", methods=["POST"])
 def login():
@@ -99,27 +95,52 @@ def logout():
 def get_current_user():
     current_user_id = get_jwt_identity()
     current_user = User.query.get(current_user_id)
-
     if current_user:
-        return jsonify({"id": current_user.id, "username": current_user.username, "email": current_user.email}), 200
-    return jsonify({"error": "User not found"}), 404
+        return jsonify({
+            "id": current_user.id,
+            "username": current_user.username,
+            "email": current_user.email,
+            "created_at": current_user.created_at,
+            "updated_at": current_user.updated_at
+        })
+    return jsonify({"message": "User not found"}), 404
 
-@app.route('/users', methods=['POST'])
+@app.route("/users", methods=["POST"])
 def create_user():
     data = request.get_json()
-    new_user = User(
-        username=data['username'],
-        email=data['email'],
-        password=bcrypt.generate_password_hash(data['password']).decode("utf-8")
-    )
+    username = data.get("username")
+    email = data.get("email")
+    password = data.get("password")
+
+    hashed_password = bcrypt.generate_password_hash(password).decode("utf-8")
+
+    new_user = User(username=username, email=email, password=hashed_password)
     db.session.add(new_user)
     db.session.commit()
-    return jsonify({'success': 'User created successfully'}), 201
 
-@app.route('/users/<int:user_id>', methods=['GET'])
+    return jsonify({"message": "User created successfully", "user": new_user.id}), 201
+
+
+@app.route('/users', methods=['GET'])
+def list_users():
+    users = User.query.all()
+    users_data = [{'id': user.id, 'username': user.username, 'email': user.email} for user in users]
+    return jsonify(users_data)
+
+@app.route("/users/<int:user_id>", methods=["GET"])
+@jwt_required()
 def get_user(user_id):
-    user = User.query.get_or_404(user_id)
-    return jsonify({'id': user.id, 'username': user.username, 'email': user.email})
+    user = User.query.get(user_id)
+    if user:
+        return jsonify({
+            "id": user.id,
+            "username": user.username,
+            "email": user.email,
+            "created_at": user.created_at,
+            "updated_at": user.updated_at
+        })
+    return jsonify({"message": "User not found"}), 404
+
 
 @app.route('/users/<int:user_id>', methods=['PUT'])
 @jwt_required()
@@ -136,182 +157,247 @@ def update_user(user_id):
         
     db.session.commit()
     return jsonify({'message': 'User updated successfully'})
-
-
-
-@app.route('/users', methods=['GET'])
-def list_users():
-    users = User.query.all()
-    users_data = [{'id': user.id, 'username': user.username, 'email': user.email} for user in users]
-    return jsonify(users_data)
-
-@app.route('/users/<int:user_id>', methods=['DELETE'])
+@app.route("/users/<int:user_id>", methods=["DELETE"])
 @jwt_required()
 def delete_user(user_id):
-    user = User.query.get_or_404(user_id)
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({"message": "User not found"}), 404
+
     db.session.delete(user)
     db.session.commit()
-    return jsonify({'message': 'User deleted successfully'}), 200
+
+    return jsonify({"message": "User deleted successfully"}), 200
+
+
+
+# Dashboard Management
+@app.route("/dashboards", methods=["POST"])
+@jwt_required()
+def create_dashboard():
+    data = request.get_json()
+    project_name = data.get("project_name")
+    user_id = get_jwt_identity()
+
+    new_dashboard = Dashboard(
+        project_name=project_name,
+        user_id=user_id
+    )
+    db.session.add(new_dashboard)
+    db.session.commit()
+
+    return jsonify({"message": "Dashboard created successfully", "dashboard": new_dashboard.id}), 201
+
+@app.route("/dashboards/<int:dashboard_id>", methods=["GET"])
+@jwt_required()
+def get_dashboard(dashboard_id):
+    dashboard = Dashboard.query.get(dashboard_id)
+    if dashboard:
+        return jsonify({
+            "id": dashboard.id,
+            "project_name": dashboard.project_name,
+            "user_id": dashboard.user_id
+        })
+    return jsonify({"message": "Dashboard not found"}), 404
+
+@app.route("/dashboards/<int:dashboard_id>", methods=["PUT"])
+@jwt_required()
+def update_dashboard(dashboard_id):
+    data = request.get_json()
+    dashboard = Dashboard.query.get(dashboard_id)
+
+    if not dashboard:
+        return jsonify({"message": "Dashboard not found"}), 404
+
+    dashboard.project_name = data.get("project_name", dashboard.project_name)
+
+    db.session.commit()
+
+    return jsonify({"message": "Dashboard updated successfully"}), 200
+
+@app.route("/dashboards/<int:dashboard_id>", methods=["DELETE"])
+@jwt_required()
+def delete_dashboard(dashboard_id):
+    dashboard = Dashboard.query.get(dashboard_id)
+    if not dashboard:
+        return jsonify({"message": "Dashboard not found"}), 404
+
+    db.session.delete(dashboard)
+    db.session.commit()
+
+    return jsonify({"message": "Dashboard deleted successfully"}), 200
+
 
 
 # Task Management
-@app.route('/tasks', methods=['POST'])
+@app.route("/tasks/<int:dashboard_id>", methods=["POST"])
 @jwt_required()
-def create_task():
+def create_task(dashboard_id):
     data = request.get_json()
-    current_user_id = get_jwt_identity()
+    title = data.get("title")
+    description = data.get("description")
+    due_date_str = data.get("due_date")
+    priority = data.get("priority")
+    status = data.get("status", "pending")
+    assignee_ids = data.get("assignee_ids", [])
 
-    # Parse the due_date string into a datetime object
-    due_date = None
-    if 'due_date' in data:
-        try:
-            due_date = datetime.fromisoformat(data['due_date'])
-        except ValueError:
-            return jsonify({'message': 'Invalid due_date format'}), 400
+    # Convert due_date from string to datetime object
+    try:
+        due_date = datetime.fromisoformat(due_date_str)
+    except ValueError:
+        return jsonify({"message": "Invalid date format. Use ISO 8601 format."}), 400
 
+    # Create new task
     new_task = Task(
-        title=data['title'],
-        description=data.get('description'),
+        title=title,
+        description=description,
         due_date=due_date,
-        priority=data.get('priority'),
-        status=data.get('status', 'pending'),
-        user_id=current_user_id
+        priority=priority,
+        status=status,
+        dashboard_id=dashboard_id,
+        user_id=get_jwt_identity()  # Set creator as the current user
     )
     db.session.add(new_task)
+    
+    # Assign users to the task
+    for user_id in assignee_ids:
+        user = User.query.get(user_id)
+        if user:
+            new_task.assignees.append(user)
+    
     db.session.commit()
-    return jsonify({'message': 'Task created successfully'}), 201
 
-@app.route('/tasks/<int:task_id>', methods=['GET'])
+    return jsonify({"message": "Task created successfully", "task": new_task.id}), 201
+
+
+@app.route("/tasks/<int:task_id>", methods=["GET"])
+@jwt_required()
 def get_task(task_id):
-    task = Task.query.get_or_404(task_id)
-    return jsonify({
-        'id': task.id,
-        'title': task.title,
-        'description': task.description,
-        'due_date': task.due_date,
-        'priority': task.priority,
-        'status': task.status,
-        'user_id': task.user_id
-    })
-
-@app.route('/tasks', methods=['GET'])
-def get_tasks():
-    page = request.args.get('page', 1, type=int)
-    per_page = request.args.get('per_page', 10, type=int)
-    tasks = Task.query.paginate(page=page, per_page=per_page)
-    tasks_data = []
-    for task in tasks.items:
-        tasks_data.append({
-            'id': task.id,
-            'title': task.title,
-            'description': task.description,
-            'due_date': task.due_date,
-            'priority': task.priority,
-            'status': task.status,
-            'user_id': task.user_id
+    task = Task.query.get(task_id)
+    if task:
+        return jsonify({
+            "id": task.id,
+            "title": task.title,
+            "description": task.description,
+            "due_date": task.due_date,
+            "priority": task.priority,
+            "status": task.status,
+            "user_id": task.user_id,
+            "dashboard_id": task.dashboard_id
         })
-    return jsonify({
-        'tasks': tasks_data,
-        'total': tasks.total,
-        'pages': tasks.pages,
-        'current_page': tasks.page
-    })
+    return jsonify({"message": "Task not found"}), 404
 
-
-@app.route('/tasks/<int:task_id>', methods=['PUT'])
+@app.route("/tasks/<int:task_id>", methods=["PUT"])
 @jwt_required()
 def update_task(task_id):
-    task = Task.query.get_or_404(task_id)
     data = request.get_json()
+    task = Task.query.get(task_id)
 
-    if 'title' in data:
-        task.title = data['title']
-    if 'description' in data:
-        task.description = data['description']
-    if 'due_date' in data:
-        task.due_date = datetime.strptime(data['due_date'], '%Y-%m-%dT%H:%M:%S')
-    if 'priority' in data:
-        task.priority = data['priority']
-    if 'status' in data:
-        task.status = data['status']
+    if not task:
+        return jsonify({"message": "Task not found"}), 404
+
+    task.title = data.get("title", task.title)
+    task.description = data.get("description", task.description)
+    task.due_date = data.get("due_date", task.due_date)
+    task.priority = data.get("priority", task.priority)
+    task.status = data.get("status", task.status)
+    task.dashboard_id = data.get("dashboard_id", task.dashboard_id)
 
     db.session.commit()
-    return jsonify({'message': 'Task updated successfully'})
 
+    return jsonify({"message": "Task updated successfully"}), 200
 
-@app.route('/tasks/<int:task_id>', methods=['DELETE'])
+@app.route("/tasks/<int:task_id>", methods=["DELETE"])
 @jwt_required()
 def delete_task(task_id):
-    task = Task.query.get_or_404(task_id)
+    task = Task.query.get(task_id)
+    if not task:
+        return jsonify({"message": "Task not found"}), 404
+
     db.session.delete(task)
     db.session.commit()
 
-# Comment Management
+    return jsonify({"message": "Task deleted successfully"}), 200
 
-@app.route('/tasks/<int:task_id>/comments', methods=['POST'])
+@app.route("/tasks/<int:task_id>/assign", methods=["POST"])
+@jwt_required()
+def assign_user_to_task(task_id):
+    data = request.get_json()
+    user_id = data.get("user_id")
+    task = Task.query.get(task_id)
+    user = User.query.get(user_id)
+
+    if not task or not user:
+        return jsonify({"message": "Task or User not found"}), 404
+
+    task.assignees.append(user)
+    db.session.commit()
+
+    return jsonify({"message": "User assigned to task successfully"}), 200
+
+# Comment Management
+@app.route("/comments/<int:task_id>", methods=["POST"])
 @jwt_required()
 def create_comment(task_id):
     data = request.get_json()
-    current_user_id = get_jwt_identity()
+    content = data.get("content")
+    user_id = get_jwt_identity()
 
     new_comment = Comment(
-        content=data['content'],
+        content=content,
         task_id=task_id,
-        user_id=current_user_id
+        user_id=user_id
     )
     db.session.add(new_comment)
     db.session.commit()
-    return jsonify({'message': 'Comment created successfully'}), 201
 
-@app.route('/tasks/<int:task_id>/comments', methods=['GET'])
-def get_comments(task_id):
-    comments = Comment.query.filter_by(task_id=task_id).all()
-    comments_data = [
-        {
-            'id': comment.id,
-            'content': comment.content,
-            'timestamp': comment.timestamp,
-            'task_id': comment.task_id,
-            'user_id': comment.user_id
-        }
-        for comment in comments
-    ]
-    return jsonify(comments_data), 200
+    return jsonify({"message": "Comment created successfully", "comment": new_comment.id}), 201
 
-@app.route('/comments/<int:comment_id>', methods=['PUT'])
+
+@app.route("/comments/<int:comment_id>", methods=["GET"])
+@jwt_required()
+def get_comment(comment_id):
+    comment = Comment.query.get(comment_id)
+    if comment:
+        return jsonify({
+            "id": comment.id,
+            "content": comment.content,
+            "timestamp": comment.timestamp,
+            "task_id": comment.task_id,
+            "user_id": comment.user_id
+        })
+    return jsonify({"message": "Comment not found"}), 404
+
+@app.route("/comments/<int:comment_id>", methods=["PUT"])
 @jwt_required()
 def update_comment(comment_id):
-    comment = Comment.query.get_or_404(comment_id)
     data = request.get_json()
-    current_user_id = get_jwt_identity()
+    comment = Comment.query.get(comment_id)
 
-    if comment.user_id != current_user_id:
-        return jsonify({'message': 'Permission denied'}), 403
+    if not comment:
+        return jsonify({"message": "Comment not found"}), 404
 
-    if 'content' in data:
-        comment.content = data['content']
-        
+    comment.content = data.get("content", comment.content)
+
     db.session.commit()
-    return jsonify({'message': 'Comment updated successfully'}), 200
 
-@app.route('/comments/<int:comment_id>', methods=['DELETE'])
+    return jsonify({"message": "Comment updated successfully"}), 200
+
+@app.route("/comments/<int:comment_id>", methods=["DELETE"])
 @jwt_required()
 def delete_comment(comment_id):
-    comment = Comment.query.get_or_404(comment_id)
-    current_user_id = get_jwt_identity()
-
-    if comment.user_id != current_user_id:
-        return jsonify({'message': 'Permission denied'}), 403
+    comment = Comment.query.get(comment_id)
+    if not comment:
+        return jsonify({"message": "Comment not found"}), 404
 
     db.session.delete(comment)
     db.session.commit()
-    return jsonify({'message': 'Comment deleted successfully'}), 200
 
+    return jsonify({"message": "Comment deleted successfully"}), 200
 
-# Define a simple route
 @app.route('/')
 def index():
     return "<h2>Hello, Flask is running!</h2>"
 
-if __name__ == '__main__':
+if __name__ == "_main_":
     app.run(port=5555, debug=True)
