@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { api, setAuthToken } from '../../utils/api';
+import { useHistory } from 'react-router-dom'; // Use useHistory instead of useNavigate
+import { api, setAuthToken } from '../../../utils/api';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+  const history = useHistory(); // Use useHistory instead of useNavigate
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await api.post('/login', { email, password });
+      const response = await api.post('https://taskmaster-app-capstone-project.onrender.com/login', { email, password });
       const { access_token } = response.data;
       localStorage.setItem('token', access_token);
       setAuthToken(access_token);
-      navigate('/home');
+      window.alert('Login successful!'); 
+      history.push('/home'); // Use history.push instead of navigate
     } catch (error) {
       console.error('Login error', error);
+      window.alert('Login failed. Please check your credentials and try again.');
     }
   };
 
