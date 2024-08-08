@@ -17,7 +17,7 @@ metadata = MetaData(
 db = SQLAlchemy(metadata=metadata)
 
 class User(db.Model, SerializerMixin):
-    _tablename_ = 'users'
+    __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(150), nullable=False, unique=True)
     email = db.Column(db.String(150), nullable=False, unique=True)
@@ -56,7 +56,7 @@ class User(db.Model, SerializerMixin):
         return f"<User {self.username}>"
 
 class Dashboard(db.Model, SerializerMixin):
-    _tablename_ = 'dashboards'
+    __tablename__ = 'dashboards'
     id = db.Column(db.Integer, primary_key=True)
     project_name = db.Column(db.String(150), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
@@ -74,7 +74,7 @@ class Dashboard(db.Model, SerializerMixin):
         return f"<Dashboard {self.project_name}>"
 
 class Task(db.Model, SerializerMixin):
-    _tablename_ = 'tasks'
+    __tablename__ = 'tasks'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(150), nullable=False)
     description = db.Column(db.Text, nullable=True)
@@ -111,7 +111,7 @@ class Task(db.Model, SerializerMixin):
         return f"<Task {self.title}>"
 
 class Comment(db.Model, SerializerMixin):
-    _tablename_ = 'comments'
+    __tablename__ = 'comments'
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.Text, nullable=False)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
