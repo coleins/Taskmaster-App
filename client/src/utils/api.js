@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5555';
+const API_URL = 'https://taskmaster-app-capstone-project.onrender.com';
 
 export const api = axios.create({
   baseURL: API_URL,

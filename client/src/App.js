@@ -1,30 +1,20 @@
 import React from "react";
-import { Switch, Route, Link } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import HomePage from "./pages/HomePage";
 import DashboardPage from "./pages/DashboardPage";
 import TaskPage from "./pages/TaskPage";
 import ProfilePage from "./pages/ProfilePage";
+import SignUp from "./components/Auth/sign up/SignUp";
+import Login from "./components/Auth/login /Login";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 const App = () => {
   return (
     <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/dashboards">Dashboards</Link>
-          </li>
-          <li>
-            <Link to="/profile">Profile</Link>
-          </li>
-        </ul>
-      </nav>
-
       <Switch>
         <Route exact path="/" component={LandingPage} />
+        <Route path="/signup" component={SignUp} />
+        <Route path="/login" component={Login} />
         <Route path="/home" component={HomePage} />
         <Route path="/dashboards" component={DashboardPage} />
         <Route path="/tasks/:id" component={TaskPage} />

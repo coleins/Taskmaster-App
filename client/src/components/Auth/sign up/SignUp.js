@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { api } from '../../utils/api';
+import { useHistory } from 'react-router-dom'; // Use useHistory instead of useNavigate
+import { api } from '../../../utils/api';
 
 const Register = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+  const history = useHistory(); // Use useHistory instead of useNavigate
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await api.post('/users', { username, email, password });
-      navigate('/login');
+      await api.post('https://taskmaster-app-capstone-project.onrender.com/users', { username, email, password });
+      history.push('/login'); // Use history.push instead of navigate
     } catch (error) {
       console.error('Register error', error);
     }
