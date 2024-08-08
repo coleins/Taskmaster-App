@@ -15,11 +15,15 @@ const LandingPage = () => {
 
   return (
     <div className="landing-page">
-      <h1>Welcome to Taskmaster</h1>
-      <p>Your one-stop solution for managing tasks efficiently.</p>
-      <div className="button-group">
-        <button className="sign-up-button" onClick={handleSignUp}>Sign Up</button>
-        <button className="login-button" onClick={handleLogin}>Log In</button>
+      <div className="card">
+        <h1>Welcome to TaskMaster</h1>
+        <p>Your one-stop solution for managing tasks efficiently.</p>
+        <div className="button-group">
+          <p>Ready to start your task management journey?</p>
+          <button className="sign-up-button" onClick={handleSignUp}>Sign Up</button>
+          <p>Already have an account?</p>
+          <button className="login-button" onClick={handleLogin}>Log In</button>
+        </div>
       </div>
     </div>
   );

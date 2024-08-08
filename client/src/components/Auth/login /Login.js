@@ -14,11 +14,11 @@ const Login = () => {
       const { access_token } = response.data;
       localStorage.setItem('token', access_token);
       setAuthToken(access_token);
-      window.alert('Login successful!'); // Display alert on successful login
+      window.alert('Login successful!'); 
       history.push('/home'); // Use history.push instead of navigate
     } catch (error) {
       console.error('Login error', error);
-      window.alert('Login failed. Please check your credentials and try again.'); // Display alert on failed login
+      window.alert('Login failed. Please check your credentials and try again.');
     }
   };
 
