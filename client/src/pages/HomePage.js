@@ -1,6 +1,8 @@
 // This is just a dummy homepage for testing.feel free to change it
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import "../components/Nav/NavBar"
+import Navbar from '../components/Nav/NavBar';
 
 const HomePage = () => {
   const history = useHistory();
@@ -16,6 +18,8 @@ const HomePage = () => {
   };
 
   return (
+    <>
+    <Navbar/>
     <div style={styles.container}>
       <h1>Welcome to TaskMaster!</h1>
       <p>Your one-stop solution for task management.</p>
@@ -26,6 +30,7 @@ const HomePage = () => {
         Logout
       </button>
     </div>
+    </>
   );
 };
 
