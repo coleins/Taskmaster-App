@@ -20,31 +20,17 @@ const HomePage = () => {
   return (
     <>
     <Navbar/>
-    <div style={styles.container}>
+    <div>
       <h1>Welcome to TaskMaster!</h1>
       <p>Your one-stop solution for task management.</p>
-      <button onClick={goToProfile} style={styles.button}>
+      <button onClick={goToProfile}>
         Go to Profile
       </button>
-      <button onClick={handleLogout} style={styles.button}>
+      <button onClick={handleLogout}>
         Logout
       </button>
     </div>
     </>
   );
 };
-
-const styles = {
-  container: {
-    textAlign: 'center',
-    marginTop: '50px',
-  },
-  button: {
-    margin: '10px',
-    padding: '10px 20px',
-    fontSize: '16px',
-    cursor: 'pointer',
-  },
-};
-
 export default HomePage;

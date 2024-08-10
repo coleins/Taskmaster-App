@@ -1,20 +1,26 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom'; // Use useHistory instead of useNavigate
+import { useHistory } from 'react-router-dom'; 
 import { api } from '../../../utils/api';
+import './SignUp.css'
 
 const Register = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const history = useHistory(); // Use useHistory instead of useNavigate
+  const [showPassword, setShowPassword] = useState(false); 
+  const [loading, setLoading] = useState(false); // Loading state
+  const history = useHistory(); 
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setLoading(true); // Start loading
     try {
       await api.post('https://taskmaster-app-capstone-project.onrender.com/users', { username, email, password });
-      history.push('/login'); // Use history.push instead of navigate
+      history.push('/login'); 
     } catch (error) {
       console.error('Register error', error);
+    } finally {
+      setLoading(false); // End loading
     }
   };
 
@@ -35,14 +41,25 @@ const Register = () => {
         onChange={(e) => setEmail(e.target.value)}
         required
       />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        required
-      />
-      <button type="submit">Register</button>
+      <div style={{ position: 'relative' }}>
+        <input
+          type={showPassword ? 'text' : 'password'} 
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <button
+          type="button"
+          onClick={() => setShowPassword(!showPassword)}
+          className="toggle-password-button" 
+        >
+          {showPassword ? 'Hide' : 'Show'} 
+        </button>
+      </div>
+      <button type="submit" disabled={loading} className='registerbtn'>
+        {loading ? 'Registering...' : 'Register'} 
+      </button>
     </form>
   );
 };

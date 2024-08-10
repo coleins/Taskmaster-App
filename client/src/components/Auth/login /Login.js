@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom'; // Use useHistory instead of useNavigate
 import { api, setAuthToken } from '../../../utils/api';
-
+import './login.css'
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false); 
   const history = useHistory(); // Use useHistory instead of useNavigate
 
   const handleLogin = async (e) => {
@@ -34,15 +34,24 @@ const Login = () => {
         onChange={(e) => setEmail(e.target.value)}
         required
       />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        required
-        
-      />
-      <button type="submit">Login</button>
+      <div style={{ position: 'relative' }}>
+        <input
+          type={showPassword ? 'text' : 'password'}
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <button
+        className='showbtn'
+          type="button"
+          onClick={() => setShowPassword(!showPassword)}
+          
+        >
+          {showPassword ? 'Hide' : 'Show'} {/* Toggle button text */}
+        </button>
+      </div>
+      <button className='loginbtn' type="submit">Login</button>
     </form>
   );
 };
