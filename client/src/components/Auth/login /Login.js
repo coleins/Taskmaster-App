@@ -7,7 +7,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false); 
-  const history = useHistory(); // Use useHistory instead of useNavigate
+  const history = useHistory(); 
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -17,7 +17,7 @@ const Login = () => {
       localStorage.setItem('token', access_token);
       setAuthToken(access_token);
       window.alert('Login successful!'); 
-      history.push('/home'); // Use history.push instead of navigate
+      history.push('/home');
     } catch (error) {
       console.error('Login error', error);
       window.alert('Login failed. Please check your credentials and try again.');
@@ -48,7 +48,7 @@ const Login = () => {
           onClick={() => setShowPassword(!showPassword)}
           
         >
-          {showPassword ? 'Hide' : 'Show'} {/* Toggle button text */}
+          {showPassword ? 'Hide' : 'Show'}
         </button>
       </div>
       <button className='loginbtn' type="submit">Login</button>
