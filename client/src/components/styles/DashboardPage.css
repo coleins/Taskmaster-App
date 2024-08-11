@@ -1,0 +1,32 @@
+.dashboards-page {
+    padding: 20px;
+  }
+  
+  .projects-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .project-item {
+    background-color: #f4f4f4;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 18px;
+  }
+  
+  .create-project-button {
+    background-color: #14919B;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .create-project-button:hover {
+    background-color: #0AD1C8;
+  }
+  

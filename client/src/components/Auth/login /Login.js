@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom'; // Use useHistory instead of useNavigate
 import { api, setAuthToken } from '../../../utils/api';
 
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false)
   const history = useHistory(); // Use useHistory instead of useNavigate
 
   const handleLogin = async (e) => {
@@ -38,6 +40,7 @@ const Login = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required
+        
       />
       <button type="submit">Login</button>
     </form>
