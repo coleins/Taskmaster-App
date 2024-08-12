@@ -1,40 +1,45 @@
 .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #14919B;
-    padding: 10px 20px;
-  }
-  
-  .logo img {
-    height: 40px;
-  }
-  
-  .nav-links {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    margin: 0;
-  }
-  
-  .nav-links li {
-    margin-left: 20px;
-  }
-  
-  .nav-button {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .nav-button:hover {
-    background-color: #0AD1C8;
-  }
-  
-  .nav-button:active {
-    background-color: #107B7B;
-  }
-  
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: transparent;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-left:1000px;
+
+}
+
+.logo-image {
+  height: 40px; /* Adjust size as needed */
+}
+
+.nav-icons {
+  display: flex;
+  gap: 15px;
+  margin-left: auto;
+}
+
+.nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: transparent;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.nav-icon a {
+  color: rgb(71, 167, 250);
+  text-decoration: none;
+}
+
+.nav-icon:hover {
+  background-color: #e0e0e0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.nav-icon svg {
+  font-size: 20px;
+}

@@ -1,0 +1,62 @@
+.stats-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px 0;
+  width: 100%;
+  max-width: 400px; /* Ensures the card does not exceed this width */
+  height: 300px; /* Increase height for consistency */
+}
+
+.stats-card h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-count {
+  font-size: 2rem;
+  color: #1a73e8;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: #666;
+}
+
+.view-toggle {
+  display: flex;
+  justify-content: space-around;
+}
+
+.view-toggle button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.view-toggle button.active {
+  background-color: #1a73e8;
+  color: white;
+}
+
+.view-toggle button:hover:not(.active) {
+  background: rgba(0, 0, 0, 0.7)
+}

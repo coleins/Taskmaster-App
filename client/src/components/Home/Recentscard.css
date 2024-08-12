@@ -1,0 +1,56 @@
+.recents-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 400px; /* Ensures the card does not exceed this width */
+    height: 300px; /* Increase height for consistency */
+}
+
+.recents-card-title {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+    position: relative;
+}
+
+.recents-card-title::after {
+    content: '';
+    display: block;
+    width: 50px; 
+    height: 3px; 
+    background-color: #1a73e8; 
+    margin: 0.5rem auto 0; 
+    border-radius: 2px; 
+}
+
+.recents-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.recents-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.recents-item:last-child {
+    border-bottom: none;
+}
+
+.task-name {
+    font-size: 1rem;
+    color: #1a73e8;
+}
+
+.task-dashboard {
+    font-size: 0.9rem;
+    color: #666;
+}
