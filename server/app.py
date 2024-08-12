@@ -172,6 +172,14 @@ def delete_user(user_id):
 
 
 # Dashboard Management
+@app.route("/dashboards", methods=["GET"])
+@jwt_required()
+def list_user_dashboards():
+    user_id = get_jwt_identity()
+    dashboards = Dashboard.query.filter_by(user_id=user_id).all()
+    dashboard_data = [{'id': dashboard.id, 'project_name': dashboard.project_name} for dashboard in dashboards]
+    return jsonify(dashboard_data), 200
+
 @app.route("/dashboards", methods=["POST"])
 @jwt_required()
 def create_dashboard():
