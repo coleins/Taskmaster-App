@@ -26,7 +26,7 @@ const DashboardsPage = () => {
       const newProjectName = `Project ${String.fromCharCode(65 + projects.length)}`;
       const newProject = { name: newProjectName };
       
-      const response = await axios.post('https://taskmaster-app-capstone-project.onrender.com', newProject);
+      const response = await axios.post('https://taskmaster-app-capstone-project.onrender.com/dashboards', newProject);
       setProjects([...projects, response.data]);
     } catch (error) {
       console.error('Error creating new project:', error);
