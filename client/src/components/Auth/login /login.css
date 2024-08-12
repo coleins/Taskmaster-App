@@ -36,7 +36,7 @@ body {
   }
   
   input {
-    width: 100%;
+    width: 350px; /* Set a fixed width */
     padding: 0.8rem;
     margin: 0.5rem 0 1rem;
     border: 1px solid #ddd;
@@ -44,8 +44,8 @@ body {
     box-sizing: border-box;
     font-size: 1rem;
     transition: border-color 0.3s;
-  }
-  
+}
+
   input:focus {
     border-color: #1a73e8;
     outline: none;

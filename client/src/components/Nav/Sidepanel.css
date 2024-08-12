@@ -1,0 +1,76 @@
+
+.sidebar {
+    position: fixed; /* Fixes the sidebar to the left of the page */
+    top: 0; /* Aligns the sidebar to the top of the page */
+    left: 0;
+    width: 200px; /* Width of the sidebar */
+    height: 100vh; /* Full height of the viewport */
+    background: rgba(33, 33, 33, 0.85); /* Dark grey with 85% opacity */
+    backdrop-filter: blur(10px); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-top-right-radius: 120px; 
+   
+}
+
+/* Logo container */
+.logo-container {
+    margin-bottom: 50px;
+}
+
+/* Logo styling */
+.logo {
+    width: 150px;
+    height: auto;
+}
+
+/* Navigation buttons container */
+.nav-buttons {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px; /* Space between buttons */
+}
+
+/* Button styling */
+.nav-button {
+    background-color: rgba(55, 55, 55, 0.7); /* Medium grey with 70% opacity */
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    border-radius: 25px; /* Bubbly effect */
+    width: 80%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Space between icon and text */
+}
+
+.nav-button i {
+    font-size: 1.2rem; /* Adjust icon size */
+}
+
+.nav-button:hover {
+    background-color: rgba(75, 75, 75, 0.85); /* Slightly lighter on hover */
+    transform: translateY(-5px); /* Lift effect */
+}
+
+.nav-button:active {
+    transform: translateY(0); /* Button press effect */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.clock{
+    font-size: 64px;
+    
+}

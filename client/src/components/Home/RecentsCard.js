@@ -1,14 +1,20 @@
 import React from 'react';
+import './Recentscard.css';
 
-const TaskCard = ({ task }) => {
+const RecentsCard = ({ recentTasks }) => {
   return (
-    <div>
-      <h4>{task.title}</h4>
-      <p>{task.description}</p>
-      <p>Due: {task.due_date}</p>
-      <p>Status: {task.status}</p>
+    <div className="recents-card">
+      <h3 className="recents-card-title">Recent Tasks</h3>
+      <ul className="recents-list">
+        {recentTasks.map((task, index) => (
+          <li key={index} className="recents-item">
+            <div className="task-name">{task.name}</div>
+            <div className="task-dashboard">{task.dashboard}</div>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
 
-export default TaskCard;
+export default RecentsCard;
