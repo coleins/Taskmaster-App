@@ -1,16 +1,36 @@
 .home {
-    background-image: url(./pexels-stijn-dijkstra-16747771.jpg);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(to bottom, #3E5151  , #DECBA4);
+    
     background-size: cover; 
     background-repeat: no-repeat;
     background-position: center center; 
     background-attachment: fixed; 
     backdrop-filter: blur(10px);
-    height: 100vh; 
-    width: 100vw;
-    overflow: hidden; 
+    overflow: hidden;
+}
+
+.navbar {
+    width: 100%; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: 1000; 
+    background: rgba(255, 255, 255, 0.9); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.content {
     display: flex;
-    justify-content: center; 
-    align-items: center;
+    flex: 1;
+    margin-top: 60px;
+}
+
+.sidebar {
+    width: 200px;
 }
 
 .homepage-container {
@@ -22,6 +42,7 @@
     max-width: 1200px;
     margin-left: 300px; 
     margin-right: 50px; 
+    margin-top: 50px;
     gap: 60px; 
     padding: 20px; 
     background: rgba(255, 255, 255, 0.8); 

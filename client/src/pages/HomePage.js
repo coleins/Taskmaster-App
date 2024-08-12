@@ -5,6 +5,7 @@ import RecentsCard from '../components/Home/RecentsCard';
 import StatsCard from '../components/Home/StatsCard';
 import '../components/styles/Homepage.css';
 import { animateCards } from '../animations'; 
+import Navbar from '../components/Nav/NavBar';
 
 const HomePage = () => {
   const [view, setView] = useState('daily'); 
@@ -33,8 +34,9 @@ const HomePage = () => {
   }, []);
 
   return (
-    <>
-      <div className='home'>
+    <div className='home'>
+      <Navbar/>
+      <div className='content'>
         <Sidebar />
         <div className='homepage-container'>
           <RecentsCard recentTasks={recentTasks} />
@@ -45,7 +47,7 @@ const HomePage = () => {
           />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

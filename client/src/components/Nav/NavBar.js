@@ -1,29 +1,36 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/NavBar.css'; 
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faClock, faBell, faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
+import '../styles/NavBar.css';
 
 const Navbar = ({ username }) => {
   return (
     <nav className="navbar">
-      <div className="logo">
-        <Link to="/">
-          <img src="/path/to/logo.png" alt="TaskMaster Logo" className="logo-image" />
-        </Link>
-      </div>
-      <ul className="nav-links">
-        <li>
-          <Link to="/home" className="nav-button">Home</Link>
+      <ul className="nav-icons">
+        <li className="nav-icon">
+          <Link to="/add-dashboard">
+            <FontAwesomeIcon icon={faPlus} />
+          </Link>
         </li>
-        <li>
-          <Link to="/dashboards" className="nav-button">Dashboards</Link>
+        <li className="nav-icon">
+          <Link to="/timer">
+            <FontAwesomeIcon icon={faClock} />
+          </Link>
         </li>
-        <li>
-          <Link to="/inbox" className="nav-button">Inbox</Link>
+        <li className="nav-icon">
+          <Link to="/notifications">
+            <FontAwesomeIcon icon={faBell} />
+          </Link>
         </li>
-        <li>
-          <Link to="/profile" className="nav-button">
-            Profile ({username})
+        <li className="nav-icon">
+          <Link to="/search">
+            <FontAwesomeIcon icon={faSearch} />
+          </Link>
+        </li>
+        <li className="nav-icon">
+          <Link to="/profile">
+            <FontAwesomeIcon icon={faUser} />
           </Link>
         </li>
       </ul>

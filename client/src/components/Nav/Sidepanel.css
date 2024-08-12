@@ -14,7 +14,7 @@
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
     z-index: 1000;
     border-top-right-radius: 120px; 
-   
+    border-bottom-right-radius: 130px; 
 }
 
 /* Logo container */
@@ -39,13 +39,13 @@
 
 /* Button styling */
 .nav-button {
-    background-color: rgba(55, 55, 55, 0.7); /* Medium grey with 70% opacity */
-    color: white;
+    background-color: rgba(55, 55, 55, 0.7); 
+    color: aliceblue;
     font-size: 1rem;
     font-weight: bold;
     padding: 10px;
     border: none;
-    border-radius: 25px; /* Bubbly effect */
+    border-radius: 25px; 
     width: 80%;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -53,7 +53,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px; /* Space between icon and text */
+    gap: 20px; 
 }
 
 .nav-button i {
@@ -70,7 +70,3 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.clock{
-    font-size: 64px;
-    
-}
