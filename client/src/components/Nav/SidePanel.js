@@ -1,29 +1,35 @@
 import React from 'react';
-import './Sidepanel.css'; // Import the CSS file for styling
+import { useHistory } from 'react-router-dom'; 
+import './Sidepanel.css';
 import Clock from './Clock';
+import logo from './logo.png';
 
 const Sidebar = () => {
+  const history = useHistory(); 
+
   return (
     <nav className="sidebar">
       <div className="logo-container">
-        <img src="path/to/your/logo.png" alt="TaskMaster Logo" className="logo" />
+        <img src={logo} alt="TaskMaster Logo" className="logo" />
       </div>
       <div className="nav-buttons">
-        <div className='nav-button'>
-          <i className="fas fa-home"></i>Home
-        </div>
-        <div className='nav-button'>
-          <i className="fas fa-tachometer-alt"></i> Dashboards
-        </div>
-        <div className='nav-button'>
-          <i className="fas fa-inbox"></i> Inbox
-        </div>
+        <button className="nav-button" onClick={() => history.push('/home')}>
+          <i className="fas fa-home"></i>
+          <span>Home</span>
+        </button>
+        <button className="nav-button" onClick={() => history.push('/dashboards')}>
+          <i className="fas fa-tachometer-alt"></i>
+          <span>Dashboards</span>
+        </button>
+        <button className="nav-button" onClick={() => history.push('/inbox')}>
+          <i className="fas fa-inbox"></i>
+          <span>Inbox</span>
+        </button>
       </div>
       <div className='clock'>
-      <Clock/>
+        <Clock />
       </div>
     </nav>
-  
   );
 };
 
