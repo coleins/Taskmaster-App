@@ -1,11 +1,11 @@
 // HomePage.js
 import React, { useEffect, useState } from 'react';
-import Sidebar from '../components/Nav/SidePanel';
+import SideBar from '../components/Nav/SideBar';
 import RecentsCard from '../components/Home/RecentsCard';
 import StatsCard from '../components/Home/StatsCard';
 import '../components/styles/Homepage.css';
 import { animateCards } from '../animations'; 
-import Navbar from '../components/Nav/NavBar';
+import NavBar from '../components/Nav/NavBar';
 
 const HomePage = () => {
   const [view, setView] = useState('daily'); 
@@ -35,9 +35,9 @@ const HomePage = () => {
 
   return (
     <div className='home'>
-      <Navbar/>
+      <NavBar/>
       <div className='content'>
-        <Sidebar />
+        <SideBar />
         <div className='homepage-container'>
           <RecentsCard recentTasks={recentTasks} />
           <StatsCard

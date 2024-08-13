@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faClock, faBell, faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
 import '../styles/NavBar.css';
 
-const Navbar = ({ username }) => {
+const NavBar = ({ username }) => {
   return (
     <nav className="navbar">
       <ul className="nav-icons">
@@ -38,4 +38,4 @@ const Navbar = ({ username }) => {
   );
 };
 
-export default Navbar;
+export default NavBar;
