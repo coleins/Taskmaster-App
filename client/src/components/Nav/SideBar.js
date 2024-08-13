@@ -1,10 +1,10 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom'; 
-import './Sidepanel.css';
+import './SideBar.css';
 import Clock from './Clock';
 import logo from './logo.png';
 
-const Sidebar = () => {
+const SideBar = () => {
   const history = useHistory(); 
 
   return (
@@ -33,4 +33,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default SideBar;
