@@ -1,0 +1,45 @@
+.navbar {
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: transparent;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-left:1000px;
+
+}
+
+.logo-image {
+  height: 40px; /* Adjust size as needed */
+}
+
+.nav-icons {
+  display: flex;
+  gap: 15px;
+  margin-left: auto;
+}
+
+.nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: transparent;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.nav-icon a {
+  color: rgb(71, 167, 250);
+  text-decoration: none;
+}
+
+.nav-icon:hover {
+  background-color: #e0e0e0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.nav-icon svg {
+  font-size: 20px;
+}
