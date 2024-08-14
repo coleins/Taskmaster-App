@@ -291,7 +291,8 @@ def get_task(task_id):
             "priority": task.priority,
             "status": task.status,
             "user_id": task.user_id,
-            "dashboard_id": task.dashboard_id
+            "dashboard_id": task.dashboard_id,
+            "assignees": [user.username for user in task.assignees]  # Include assignees
         })
     return jsonify({"message": "Task not found"}), 404
 

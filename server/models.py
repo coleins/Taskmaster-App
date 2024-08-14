@@ -85,16 +85,18 @@ class Task(db.Model, SerializerMixin):
     dashboard_id = db.Column(db.Integer, db.ForeignKey('dashboards.id'), nullable=False)
     created_at = db.Column(DateTime, server_default=db.func.now())
     updated_at = db.Column(DateTime, onupdate=db.func.now())
-    comments = db.relationship(
-        'Comment', backref='task', lazy=True, cascade='all, delete-orphan'
-    )
+    comments = db.relationship('Comment', backref='task', lazy=True, cascade='all, delete-orphan')
+    
+    # Serialize assignees
+    assignees = db.relationship('User', secondary='task_assignees', backref='tasks')
+    serialize_rules = ('-assignees.password',)  # Exclude sensitive data like passwords
 
     @validates('title')
     def validate_title(self, key, title):
         if not title:
             raise ValueError("Title is required")
         return title
-    
+
     @validates('priority')
     def validate_priority(self, key, priority):
         if priority not in ['high', 'medium', 'low']:
@@ -109,6 +111,7 @@ class Task(db.Model, SerializerMixin):
 
     def _repr_(self):
         return f"<Task {self.title}>"
+
 
 class Comment(db.Model, SerializerMixin):
     __tablename__ = 'comments'
