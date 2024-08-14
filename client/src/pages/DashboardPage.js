@@ -4,6 +4,7 @@ import { Button, Form, ListGroup } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { gsap } from "gsap";
+import { useHistory } from "react-router-dom";  // Import useHistory
 import "../components/styles/DashboardPage.css";
 import NavBar from "../components/Nav/NavBar";
 import SideBar from "../components/Nav/SideBar";
@@ -18,6 +19,7 @@ const DashboardsPage = () => {
   const cardContainerRef = useRef(null);
   const addModalRef = useRef(null);
   const editModalRef = useRef(null);
+  const history = useHistory();  // Initialize useHistory
 
   useEffect(() => {
     axios
@@ -107,6 +109,10 @@ const DashboardsPage = () => {
       .catch((error) => console.error("Error deleting dashboard:", error));
   };
 
+  const handleDashboardClick = (id) => {
+    history.push(`/tasks/${id}`);  // Navigate to the TaskPage
+  };
+
   return (
     <>
       <NavBar />
@@ -128,13 +134,18 @@ const DashboardsPage = () => {
             </Button>
             <ListGroup>
               {dashboards.map((dashboard) => (
-                <ListGroup.Item key={dashboard.id} className="list-group-item">
+                <ListGroup.Item
+                  key={dashboard.id}
+                  className="list-group-item"
+                  onClick={() => handleDashboardClick(dashboard.id)}  // Add onClick handler
+                >
                   {dashboard.project_name}
                   <div className="float-end">
                     <Button
                       variant="outline-primary"
                       className="me-2"
-                      onClick={() => {
+                      onClick={(e) => {
+                        e.stopPropagation();
                         setSelectedDashboard(dashboard);
                         setShowEditModal(true);
                       }}
@@ -143,7 +154,10 @@ const DashboardsPage = () => {
                     </Button>
                     <Button
                       variant="outline-danger"
-                      onClick={() => handleDeleteDashboard(dashboard.id)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDeleteDashboard(dashboard.id);
+                      }}
                     >
                       <FontAwesomeIcon icon={faTrash} />
                     </Button>
