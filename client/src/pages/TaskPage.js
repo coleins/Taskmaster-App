@@ -30,13 +30,14 @@ const TaskPage = () => {
       })
       .then((response) => setTasks(response.data))
       .catch((error) => console.error("Error fetching tasks:", error));
-
+  
     gsap.fromTo(
       taskContainerRef.current,
       { y: 100, opacity: 0 },
       { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
     );
   }, [id]);
+  
 
   useEffect(() => {
     if (showAddModal) {
@@ -55,7 +56,14 @@ const TaskPage = () => {
         { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
       )
       .then((response) => {
-        setTasks([...tasks, response.data]);
+        const taskId = response.data.task; // Extract task ID from the response
+        return axios.get(
+          `https://taskmaster-app-capstone-project.onrender.com/tasks/${taskId}`,
+          { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
+        );
+      })
+      .then((response) => {
+        setTasks([...tasks, response.data]); // Add the full task object to the tasks list
         setNewTask({
           title: "",
           description: "",
@@ -67,6 +75,7 @@ const TaskPage = () => {
       })
       .catch((error) => console.error("Error adding task:", error));
   };
+  
 
   return (
     <>

@@ -1,9 +1,21 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
+import axios from "axios";
 import "../styles/TaskCard.css";
 
 const TaskCard = ({ task }) => {
-  console.log(task); // Add this line to check the task object structure
+  const handleInvite = () => {
+    const email = prompt("Enter the email address to invite:");
+    if (email) {
+      axios.post(
+        `https://taskmaster-app-capstone-project.onrender.com/tasks/${task.id}/invite`,
+        { email },
+        { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
+      )
+      .then(response => alert(response.data.message))
+      .catch(error => console.error("Error sending invitation:", error));
+    }
+  };
 
   return (
     <Card className="task-card">
@@ -16,10 +28,10 @@ const TaskCard = ({ task }) => {
         <div className="task-actions">
           <Button variant="secondary" className="task-action-button">Edit</Button>
           <Button variant="danger" className="task-action-button">Delete</Button>
+          <Button variant="info" className="task-action-button" onClick={handleInvite}>Invite</Button>
         </div>
       </Card.Body>
     </Card>
   );
 };
-
 export default TaskCard;
