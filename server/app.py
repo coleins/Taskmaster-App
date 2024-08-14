@@ -10,6 +10,7 @@ from models import db, User, Task, Comment, Dashboard
 import logging
 from flask_restful import Api
 from dotenv import load_dotenv
+from flask_mail import Mail, Message
 
 # Load environment variables from .env file
 load_dotenv()
@@ -24,6 +25,12 @@ app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY", "fsbdgfnhgvjnvhmvh" +
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(days=int(os.getenv("JWT_ACCESS_TOKEN_EXPIRES", 1)))
 app.json.compact = False
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "JKSRVHJVFBSRDFV" + str(random.randint(1, 1000000000000)))
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'mastertask367@gmail.com'
+app.config['MAIL_PASSWORD'] = 'getitdone'
+
 
 # Initialize extensions
 bcrypt = Bcrypt(app)
@@ -32,6 +39,7 @@ migrate = Migrate(app, db)
 db.init_app(app)
 
 api = Api(app)
+mail = Mail(app)
 
 # Configure logging
 logging.basicConfig(filename='app.log', level=logging.INFO)
@@ -238,6 +246,44 @@ def delete_dashboard(dashboard_id):
 
 
 # Task Management
+@app.route("/dashboards/<int:dashboard_id>/tasks", methods=["GET"])
+@jwt_required()
+def get_tasks(dashboard_id):
+    tasks = Task.query.filter_by(dashboard_id=dashboard_id).all()
+    return jsonify([{
+        "id": task.id,
+        "title": task.title,
+        "description": task.description,
+        "due_date": task.due_date,
+        "priority": task.priority,
+        "status": task.status,
+        "user_id": task.user_id,
+        "dashboard_id": task.dashboard_id
+    } for task in tasks])
+
+@app.route("/tasks/<int:task_id>/invite", methods=["POST"])
+@jwt_required()
+def invite_user_to_task(task_id):
+    data = request.get_json()
+    email = data.get("email")
+    task = Task.query.get(task_id)
+
+    if not task:
+        return jsonify({"message": "Task not found"}), 404
+
+    # Send email logic here
+    msg = Message(
+        subject="You have been invited to a task",
+        sender="mastertask367@gmail.com",
+        recipients=[email],
+        body=f"You have been invited to work on the task: {task.title}.\n\nDescription: {task.description}\nDue Date: {task.due_date}"
+    )
+    mail.send(msg)
+
+    return jsonify({"message": f"Invitation sent to {email}"}), 200
+
+
+
 @app.route("/tasks/<int:dashboard_id>", methods=["POST"])
 @jwt_required()
 def create_task(dashboard_id):
