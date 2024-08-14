@@ -25,11 +25,11 @@ app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY", "fsbdgfnhgvjnvhmvh" +
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(days=int(os.getenv("JWT_ACCESS_TOKEN_EXPIRES", 1)))
 app.json.compact = False
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "JKSRVHJVFBSRDFV" + str(random.randint(1, 1000000000000)))
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_SERVER'] = 'smtp-mail.outlook.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'mastertask367@gmail.com'
-app.config['MAIL_PASSWORD'] = 'getitdone'
+app.config['MAIL_USERNAME'] = 'taskmaster200@outlook.com'
+app.config['MAIL_PASSWORD'] = 'Getitdone'
 
 
 # Initialize extensions
@@ -274,7 +274,7 @@ def invite_user_to_task(task_id):
     # Send email logic here
     msg = Message(
         subject="You have been invited to a task",
-        sender="mastertask367@gmail.com",
+        sender="taskmaster200@outlook.com",
         recipients=[email],
         body=f"You have been invited to work on the task: {task.title}.\n\nDescription: {task.description}\nDue Date: {task.due_date}"
     )
