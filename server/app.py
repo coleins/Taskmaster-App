@@ -495,6 +495,7 @@ def delete_comment(comment_id):
 
 # Timer Sound Route
 @app.route('/timer-sound')
+@jwt_required()
 def timer_sound():
     return send_from_directory('static', 'beep_sound.mp3')
 
