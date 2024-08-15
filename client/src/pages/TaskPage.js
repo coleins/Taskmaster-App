@@ -85,16 +85,20 @@ const TaskPage = () => {
             Add Task
           </Button>
         </div>
-
+        
         <div className="task-cards-container">
-          {tasks.map((task) => (
-            <TaskCard
-              key={task.id}
-              task={task}
-              onTaskUpdate={onTaskUpdate}
-              onTaskDelete={onTaskDelete}
-            />
-          ))}
+          {tasks.length === 0 ? (
+            <p className="no-tasks-placeholder">No tasks available. Please add a task.</p>
+          ) : (
+            tasks.map((task) => (
+              <TaskCard
+                key={task.id}
+                task={task}
+                onTaskUpdate={onTaskUpdate}
+                onTaskDelete={onTaskDelete}
+              />
+            ))
+          )}
         </div>
       </div>
 

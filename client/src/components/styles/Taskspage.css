@@ -149,3 +149,10 @@
   background: #17bdf0;
   transform: scale(1.05);
 }
+
+.no-tasks-placeholder {
+  font-size: 1.2rem;
+  text-align: center;
+  color: #777;
+  margin-top: 20px;
+}
