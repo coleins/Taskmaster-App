@@ -1,54 +1,62 @@
 .stats-card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  width: 100%;
+  max-width: 400px; /* Ensures the card does not exceed this width */
+  height: 300px; /* Increase height for consistency */
 }
 
 .stats-card h2 {
-  margin-bottom: 20px;
-  font-size: 1.5em;
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
-.stats-content {
+.stats {
   display: flex;
   justify-content: space-around;
+  margin-bottom: 20px;
 }
 
 .stat-item {
   text-align: center;
 }
 
-.stat-item h4 {
-  margin-bottom: 10px;
-  font-size: 1.2em;
+.stat-count {
+  font-size: 2rem;
+  color: #1a73e8;
+  display: block;
+  margin-bottom: 5px;
 }
 
-.stat-item p {
-  font-size: 1.5em;
-  margin: 0;
+.stat-label {
+  font-size: 1rem;
+  color: #666;
 }
 
-.view-selector {
-  margin-top: 20px;
-  text-align: center;
+.view-toggle {
+  display: flex;
+  justify-content: space-around;
 }
 
-.view-selector button {
-  background-color: #007bff;
-  border: none;
-  color: white;
+.view-toggle button {
   padding: 10px 20px;
-  margin: 0 5px;
+  border: none;
   border-radius: 5px;
+  background-color: #f0f0f0;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.view-selector button.active {
-  background-color: #0056b3;
+.view-toggle button.active {
+  background-color: #1a73e8;
+  color: white;
 }
 
-.view-selector button:hover {
-  background-color: #0056b3;
+.view-toggle button:hover:not(.active) {
+  background: rgba(0, 0, 0, 0.7)
 }

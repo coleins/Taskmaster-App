@@ -5,21 +5,21 @@ const StatsCard = ({ view, currentStats, handleViewChange }) => {
   return (
     <div className="stats-card">
       <h2>{view.charAt(0).toUpperCase() + view.slice(1)} Stats</h2>
-      <div className="stats-container">
-        <div className="stats-item">
-          <h3>Completed</h3>
-          <p>{currentStats.completed}</p>
+      <div className="stats">
+        <div className="stat-item">
+          <h3 className='stat-label'>Completed</h3>
+          <p className='stat-count'>{currentStats.completed}</p>
         </div>
-        <div className="stats-item">
-          <h3>In Progress</h3>
-          <p>{currentStats.inProgress}</p>
+        <div className="stat-item">
+          <h3 className='stat-label'>In Progress</h3>
+          <p className='stat-count'>{currentStats.inProgress}</p>
         </div>
-        <div className="stats-item">
-          <h3>Pending</h3>
-          <p>{currentStats.pending}</p>
+        <div className="stat-item">
+          <h3 className='stat-label'>Pending</h3>
+          <p className='stat-count'>{currentStats.pending}</p>
         </div>
       </div>
-      <div className="view-selector">
+      <div className="view-toggle">
         <button
           onClick={() => handleViewChange("daily")}
           className={view === "daily" ? "active" : ""}
