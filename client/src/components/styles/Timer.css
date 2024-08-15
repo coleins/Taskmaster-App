@@ -1,0 +1,20 @@
+/* Timer.css */
+.timer-container {
+  text-align: center;
+  margin: 20px;
+}
+
+.timer-display {
+  font-size: 2em;
+  margin: 20px 0;
+}
+
+input {
+  width: 100px;
+  padding: 5px;
+}
+
+button {
+  margin: 5px;
+  padding: 10px;
+}

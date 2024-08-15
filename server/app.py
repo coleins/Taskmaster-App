@@ -1,6 +1,6 @@
 import random
 import os
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager, create_access_token, get_jwt_identity, jwt_required, get_jwt
@@ -493,9 +493,16 @@ def delete_comment(comment_id):
 
     return jsonify({"message": "Comment deleted successfully"}), 200
 
+# Timer Sound Route
+@app.route('/timer-sound')
+def timer_sound():
+    return send_from_directory('static', 'beep_sound.mp3')
+
 @app.route('/')
 def index():
     return "<h2>Hello, Flask is running!</h2>"
+
+
 
 if __name__ == "__main__":
     app.run(port=5555, debug=True)
