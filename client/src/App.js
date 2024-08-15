@@ -7,6 +7,7 @@ import ProfilePage from "./pages/ProfilePage";
 import SignUp from "./components/Auth/sign up/SignUp";
 import Login from "./components/Auth/login /Login";
 import {Route, Switch, } from 'react-router-dom';
+import User from "./components/Nav/User";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/dashboards" component={DashboardPage} />
         <Route path="/tasks/:id" component={TaskPage} />
         <Route path="/profile" component={ProfilePage} />
+        <Route path="/user" component={User} />
       </Switch>
     </div>
   );
