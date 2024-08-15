@@ -1,19 +1,85 @@
 .task-card {
-    margin: 10px;
-    padding: 20px;
-    background: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .task-actions {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .task-action-button {
-    padding: 5px 10px;
-    border-radius: 8px;
-  }
-  
+  margin: 10px;
+  padding: 20px;
+  background: #ffffff; /* White background for contrast */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-family: 'Roboto', sans-serif; /* Modern and clean font */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.task-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.task-body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.task-details {
+  flex: 1 1 60%;
+}
+
+.task-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.task-text {
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.task-actions {
+  flex: 1 1 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.task-action-button {
+  width: 20%;
+  padding: 0.7rem;
+  margin: 20px;
+  margin-top: 1rem;
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.2s;
+}
+.task-action-button:hover{
+  background: #17bdf0;
+  transform: scale(1.05);
+}
+
+/* Ensures the modal backdrop covers the entire screen and applies the blur effect */
+.modal-backdrop {
+  backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.3); 
+}
+
+/* Center the modal in the viewport */
+.modal-dialog {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+}
+
+/* Style for the modal content */
+.modal-content {
+  background: #ffffff; 
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+}
