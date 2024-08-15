@@ -1,5 +1,6 @@
-import React from 'react';
-import './Recentscard.css';
+// RecentsCard.js
+import React from "react";
+import "./Recentscard.css";
 
 const RecentsCard = ({ recentTasks }) => {
   return (
