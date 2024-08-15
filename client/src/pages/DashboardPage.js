@@ -4,7 +4,7 @@ import { Button, Form, ListGroup } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { gsap } from "gsap";
-import { useHistory } from "react-router-dom";  // Import useHistory
+import { useHistory } from "react-router-dom"; // Import useHistory
 import "../components/styles/DashboardPage.css";
 import NavBar from "../components/Nav/NavBar";
 import SideBar from "../components/Nav/SideBar";
@@ -19,7 +19,7 @@ const DashboardsPage = () => {
   const cardContainerRef = useRef(null);
   const addModalRef = useRef(null);
   const editModalRef = useRef(null);
-  const history = useHistory();  // Initialize useHistory
+  const history = useHistory(); // Initialize useHistory
 
   useEffect(() => {
     axios
@@ -110,7 +110,7 @@ const DashboardsPage = () => {
   };
 
   const handleDashboardClick = (id) => {
-    history.push(`/tasks/${id}`);  // Navigate to the TaskPage
+    history.push(`/tasks/${id}`); // Navigate to the TaskPage
   };
 
   return (
@@ -137,7 +137,7 @@ const DashboardsPage = () => {
                 <ListGroup.Item
                   key={dashboard.id}
                   className="list-group-item"
-                  onClick={() => handleDashboardClick(dashboard.id)}  // Add onClick handler
+                  onClick={() => handleDashboardClick(dashboard.id)} // Add onClick handler
                 >
                   {dashboard.project_name}
                   <div className="float-end">
