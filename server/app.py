@@ -246,6 +246,50 @@ def delete_dashboard(dashboard_id):
 
 
 # Task Management
+
+@app.route('/recent-tasks', methods=['GET'])
+@jwt_required()
+def get_recent_tasks():
+    user_id = get_jwt_identity()
+    recent_tasks = Task.query.filter_by(user_id=user_id).order_by(Task.created_at.desc()).limit(5).all()
+    return jsonify([{
+        'name': task.title,
+        'dashboard': task.dashboard.project_name  # Assuming Task model has a relationship with Dashboard
+    } for task in recent_tasks])
+
+
+@app.route("/tasks/stats", methods=["GET"])
+@jwt_required()
+def get_task_stats():
+    user_id = get_jwt_identity()
+    view = request.args.get("view", "daily")  # Default to 'daily'
+
+    now = datetime.now()
+    start_date, end_date = None, None
+
+    if view == "daily":
+        start_date = now.replace(hour=0, minute=0, second=0, microsecond=0)
+        end_date = start_date + timedelta(days=1)
+    elif view == "weekly":
+        start_date = now - timedelta(days=now.weekday())
+        end_date = start_date + timedelta(weeks=1)
+    elif view == "monthly":
+        start_date = now.replace(day=1)
+        end_date = (start_date + timedelta(days=31)).replace(day=1)
+    else:
+        return jsonify({"message": "Invalid view parameter"}), 400
+
+    tasks = Task.query.filter_by(user_id=user_id).filter(Task.created_at.between(start_date, end_date)).all()
+
+    stats = {
+        "completed": sum(1 for task in tasks if task.status == "completed"),
+        "inProgress": sum(1 for task in tasks if task.status == "in_progress"),
+        "pending": sum(1 for task in tasks if task.status == "pending")
+    }
+
+    return jsonify(stats), 200
+
+
 @app.route("/dashboards/<int:dashboard_id>/tasks", methods=["GET"])
 @jwt_required()
 def get_tasks(dashboard_id):
