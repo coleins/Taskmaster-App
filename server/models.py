@@ -118,7 +118,8 @@ class Comment(db.Model, SerializerMixin):
     task_id = db.Column(db.Integer, db.ForeignKey('tasks.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     created_at = db.Column(DateTime, server_default=db.func.now())
-    updated_at = db.Column(DateTime, onupdate=db.func.now())
+    updated_at = db.Column(DateTime,
+                            onupdate=db.func.now())
 
     @validates('content')
     def validate_content(self, key, content):
