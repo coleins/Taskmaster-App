@@ -6,7 +6,7 @@ import TaskPage from "./pages/TaskPage";
 import ProfilePage from "./pages/ProfilePage";
 import SignUp from "./components/Auth/sign up/SignUp";
 import Login from "./components/Auth/login /Login";
-import {Route, Switch } from 'react-router-dom';
+import {Route, Switch, } from 'react-router-dom';
 
 const App = () => {
   return (
