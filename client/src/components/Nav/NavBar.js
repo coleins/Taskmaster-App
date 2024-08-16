@@ -1,3 +1,6 @@
+
+import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom'; // Import useHistory instead of useNavigate
 // src/components/Nav/NavBar.js
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -8,6 +11,16 @@ import PomodoroTimer from './Timer';
 import '../styles/NavBar.css';
 
 const NavBar = ({ username }) => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const history = useHistory(); // Use useHistory instead of useNavigate
+
+  const handleLogout = () => {
+    // Implement your logout logic here, such as clearing tokens or user data
+    // For example:
+    // localStorage.removeItem('userToken');
+    history.push('/'); // Redirect to the landing page after logout
+  };
+
   const [showTimer, setShowTimer] = useState(false);
   // const location = useLocation();
 
@@ -34,10 +47,14 @@ const NavBar = ({ username }) => {
             <FontAwesomeIcon icon={faSearch} />
           </Link>
         </li>
-        <li className="nav-icon">
-          <Link to="/profile">
-            <FontAwesomeIcon icon={faUser} />
-          </Link>
+        <li className="nav-icon" onClick={() => setDropdownOpen(!dropdownOpen)}>
+          <FontAwesomeIcon icon={faUser} />
+          {dropdownOpen && (
+            <div className="dropdown-menu">
+              <Link to="/user" className="to-settings">Account Settings</Link>
+              <button onClick={handleLogout} className="logout">Log Out</button>
+            </div>
+          )}
         </li>
       </ul>
       {showTimer && <PomodoroTimer />}

@@ -107,7 +107,7 @@ const TaskPage = () => {
           <div className="popup-card">
             <h3>Add New Task</h3>
             <Form>
-              <Form.Group controlId="formTaskTitle">
+              <Form.Group controlId="formTaskTitle" className="form-group">
                 <Form.Label>Title</Form.Label>
                 <Form.Control
                   type="text"
@@ -115,20 +115,22 @@ const TaskPage = () => {
                   onChange={(e) =>
                     setNewTask({ ...newTask, title: e.target.value })
                   }
+                  className="form-control"
                 />
               </Form.Group>
-              <Form.Group controlId="formTaskDescription">
+              <Form.Group controlId="formTaskDescription" className="form-group">
                 <Form.Label>Description</Form.Label>
                 <Form.Control
                   as="textarea"
-                  rows={3}
+                  rows={5} // Adjusted size
                   value={newTask.description}
                   onChange={(e) =>
                     setNewTask({ ...newTask, description: e.target.value })
                   }
+                  className="form-control"
                 />
               </Form.Group>
-              <Form.Group controlId="formTaskDueDate">
+              <Form.Group controlId="formTaskDueDate" className="form-group">
                 <Form.Label>Due Date</Form.Label>
                 <Form.Control
                   type="date"
@@ -136,45 +138,53 @@ const TaskPage = () => {
                   onChange={(e) =>
                     setNewTask({ ...newTask, due_date: e.target.value })
                   }
+                  className="form-control"
                 />
               </Form.Group>
-              <Form.Group controlId="formTaskPriority">
-                <Form.Label>Priority</Form.Label>
-                <Form.Control
-                  as="select"
-                  value={newTask.priority}
-                  onChange={(e) =>
-                    setNewTask({ ...newTask, priority: e.target.value })
-                  }
+              <div className="form-row">
+                <Form.Group controlId="formTaskPriority" className="form-group">
+                  <Form.Label>Priority</Form.Label>
+                  <Form.Control
+                    as="select"
+                    value={newTask.priority}
+                    onChange={(e) =>
+                      setNewTask({ ...newTask, priority: e.target.value })
+                    }
+                    className="form-control"
+                  >
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                  </Form.Control>
+                </Form.Group>
+                <Form.Group controlId="formTaskStatus" className="form-group">
+                  <Form.Label>Status</Form.Label>
+                  <Form.Control
+                    as="select"
+                    value={newTask.status}
+                    onChange={(e) =>
+                      setNewTask({ ...newTask, status: e.target.value })
+                    }
+                    className="form-control"
+                  >
+                    <option value="pending">Pending</option>
+                    <option value="in_progress">In Progress</option>
+                    <option value="completed">Completed</option>
+                  </Form.Control>
+                </Form.Group>
+              </div>
+              <div className="modal-actions">
+                <Button variant="primary" onClick={handleAddTask} className="action-buttons">
+                  Create Task
+                </Button>
+                <Button
+                  variant="secondary"
+                  onClick={() => setShowAddModal(false)}
+                  className="action-buttons"
                 >
-                  <option value="low">Low</option>
-                  <option value="medium">Medium</option>
-                  <option value="high">High</option>
-                </Form.Control>
-              </Form.Group>
-              <Form.Group controlId="formTaskStatus">
-                <Form.Label>Status</Form.Label>
-                <Form.Control
-                  as="select"
-                  value={newTask.status}
-                  onChange={(e) =>
-                    setNewTask({ ...newTask, status: e.target.value })
-                  }
-                >
-                  <option value="pending">Pending</option>
-                  <option value="in_progress">In Progress</option>
-                  <option value="completed">Completed</option>
-                </Form.Control>
-              </Form.Group>
-              <Button variant="primary" onClick={handleAddTask}>
-                Create Task
-              </Button>
-              <Button
-                variant="secondary"
-                onClick={() => setShowAddModal(false)}
-              >
-                Cancel
-              </Button>
+                  Cancel
+                </Button>
+              </div>
             </Form>
           </div>
         </div>

@@ -7,7 +7,9 @@ import ProfilePage from "./pages/ProfilePage";
 import SignUp from "./components/Auth/sign up/SignUp";
 import Login from "./components/Auth/login /Login";
 import {Route, Switch, } from 'react-router-dom';
+import User from "./components/Nav/User";
 import Timer from "./components/Nav/Timer"
+
 
 const App = () => {
   return (
@@ -21,6 +23,7 @@ const App = () => {
         <Route path="/timer" element={<Timer />} />
         <Route path="/tasks/:id" component={TaskPage} />
         <Route path="/profile" component={ProfilePage} />
+        <Route path="/user" component={User} />
       </Switch>
     </div>
   );
