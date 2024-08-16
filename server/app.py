@@ -1,6 +1,6 @@
 import random
 import os
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager, create_access_token, get_jwt_identity, jwt_required, get_jwt
@@ -493,9 +493,34 @@ def delete_comment(comment_id):
 
     return jsonify({"message": "Comment deleted successfully"}), 200
 
+# Timer Management
+@app.route('/timer-sound')
+@jwt_required()
+def timer_sound():
+    return send_from_directory('public', 'beep_sound.mp3')
+
+# Notification Management
+@app.route('/check-tasks-due', methods=['GET'])
+@jwt_required()
+def check_tasks_due():
+    now = datetime.utcnow()
+    one_hour_from_now = now + timedelta(hours=1)
+    
+    tasks_due = Task.query.filter(Task.due_date <= one_hour_from_now, Task.due_date > now).all()
+    
+    notifications = []
+    for task in tasks_due:
+        project_name = task.project.name  # Assuming task has a project relationship
+        task_name = task.title
+        message = f"Dear user, the project {project_name} has a task {task_name} due in 1 hour."
+        notifications.append(message)
+    
+    return jsonify(notifications)
 @app.route('/')
 def index():
     return "<h2>Hello, Flask is running!</h2>"
+
+
 
 if __name__ == "__main__":
     app.run(port=5555, debug=True)

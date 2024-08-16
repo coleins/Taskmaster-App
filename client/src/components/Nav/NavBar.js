@@ -1,7 +1,12 @@
+
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom'; // Import useHistory instead of useNavigate
+// src/components/Nav/NavBar.js
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faClock, faBell, faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
+import PomodoroTimer from './Timer';
 
 import '../styles/NavBar.css';
 
@@ -16,6 +21,9 @@ const NavBar = ({ username }) => {
     history.push('/'); // Redirect to the landing page after logout
   };
 
+  const [showTimer, setShowTimer] = useState(false);
+  // const location = useLocation();
+
   return (
     <nav className="navbar">
       <ul className="nav-icons">
@@ -25,9 +33,9 @@ const NavBar = ({ username }) => {
           </Link>
         </li>
         <li className="nav-icon">
-          <Link to="/timer">
+          <button onClick={() => setShowTimer(!showTimer)}>
             <FontAwesomeIcon icon={faClock} />
-          </Link>
+          </button>
         </li>
         <li className="nav-icon">
           <Link to="/notifications">
@@ -49,6 +57,7 @@ const NavBar = ({ username }) => {
           )}
         </li>
       </ul>
+      {showTimer && <PomodoroTimer />}
     </nav>
   );
 };
