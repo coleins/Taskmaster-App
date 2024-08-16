@@ -1,11 +1,6 @@
 
-// NavBar.js
-
+import { Link, useHistory } from 'react-router-dom'; 
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom'; // Import useHistory instead of useNavigate
-// src/components/Nav/NavBar.js
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faClock, faBell, faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
 import NotificationChecker from './NotificationChecker';

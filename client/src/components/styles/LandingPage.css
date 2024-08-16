@@ -56,7 +56,7 @@ body {
 .sign-up-button, .login-button {
   background-color: #1a73e8;
   color: white;
-  padding: 10px 45px;
+  width: 50%;
   margin: 10px;
   border: none;
   border-radius: 5px;

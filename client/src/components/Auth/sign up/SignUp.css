@@ -85,6 +85,8 @@ body {
     position: absolute;
     right: 4px;
     top: 2px;
+    margin-left: 140px;
+    width: 20%;
   }
   
   .toggle-password-button:hover {
