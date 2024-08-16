@@ -1,4 +1,6 @@
 
+// NavBar.js
+
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom'; // Import useHistory instead of useNavigate
 // src/components/Nav/NavBar.js
@@ -6,11 +8,16 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faClock, faBell, faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
-import PomodoroTimer from './Timer';
-
+import NotificationChecker from './NotificationChecker';
 import '../styles/NavBar.css';
 
 const NavBar = ({ username }) => {
+  const [showNotifications, setShowNotifications] = useState(false);
+
+  const toggleNotifications = () => {
+    setShowNotifications(!showNotifications);
+  };
+
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const history = useHistory(); // Use useHistory instead of useNavigate
 
@@ -33,14 +40,20 @@ const NavBar = ({ username }) => {
           </Link>
         </li>
         <li className="nav-icon">
-          <button onClick={() => setShowTimer(!showTimer)}>
+          <Link to="/timer">
             <FontAwesomeIcon icon={faClock} />
-          </button>
+          </Link>
         </li>
         <li className="nav-icon">
-          <Link to="/notifications">
-            <FontAwesomeIcon icon={faBell} />
-          </Link>
+          <div className="dropdown">
+            <FontAwesomeIcon icon={faBell} onClick={toggleNotifications} />
+            {showNotifications && (
+              <div className="dropdown-content">
+                <NotificationChecker />
+                {/* Optionally, add a placeholder or actual notification content here */}
+              </div>
+            )}
+          </div>
         </li>
         <li className="nav-icon">
           <Link to="/search">
@@ -57,7 +70,6 @@ const NavBar = ({ username }) => {
           )}
         </li>
       </ul>
-      {showTimer && <PomodoroTimer />}
     </nav>
   );
 };

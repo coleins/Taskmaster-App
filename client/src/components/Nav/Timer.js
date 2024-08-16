@@ -5,7 +5,7 @@ const Timer = () => {
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const [inputTime, setInputTime] = useState('');
-  const [beep] = useState(new Audio('/client/public/Timer clock ring sound(MP3_160K).mp3')); // Ensure the beep sound file is in the public directory
+  const [beep] = useState(new Audio('/beep-sound.mp3')); // Ensure the beep sound file is in the public directory
 
   useEffect(() => {
     let interval = null;
