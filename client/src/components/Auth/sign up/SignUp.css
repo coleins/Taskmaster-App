@@ -83,8 +83,8 @@ body {
     cursor: pointer;
     transition: color 0.3s;
     position: absolute;
-    right: 10px;
-    top: 12px;
+    right: 4px;
+    top: 2px;
   }
   
   .toggle-password-button:hover {
