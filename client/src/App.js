@@ -8,8 +8,8 @@ import SignUp from "./components/Auth/sign up/SignUp";
 import Login from "./components/Auth/login /Login";
 import { Route, Switch } from "react-router-dom";
 import NotificationChecker from "./components/Nav/NotificationChecker";
-import {Route, Switch, } from 'react-router-dom';
 import User from "./components/Nav/User";
+import Inbox from "./pages/Inbox";
 import Timer from "./components/Nav/Timer"
 
 
@@ -26,6 +26,7 @@ const App = () => {
         <Route path="/tasks/:id" component={TaskPage} />
         <Route path="/profile" component={ProfilePage} />
         <Route path="/user" component={User} />
+        <Route path="/inbox" component={Inbox} />
       </Switch>
     </div>
   );

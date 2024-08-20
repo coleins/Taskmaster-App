@@ -1,9 +1,6 @@
-/* NavBar.css */
-
 .navbar {
-  display: flex; /* Ensure the navbar uses flexbox */
   align-items: center;
-  justify-content: space-between; /* Space between logo (if any) and nav icons */
+  justify-content: space-between;
   padding: 10px 20px;
   background-color: transparent;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -32,7 +29,6 @@
   background-color: transparent;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s, box-shadow 0.3s;
-  position: relative; /* Important for dropdown positioning */
 }
 
 .nav-icon a {
