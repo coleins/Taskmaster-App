@@ -14,7 +14,7 @@ const NavBar = ({ username }) => {
   };
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const history = useHistory(); // Use useHistory instead of useNavigate
+  const history = useHistory();
 
   const handleLogout = () => {
     // Implement your logout logic here, such as clearing tokens or user data
@@ -23,9 +23,7 @@ const NavBar = ({ username }) => {
     history.push('/'); // Redirect to the landing page after logout
   };
 
-  const [showTimer, setShowTimer] = useState(false);
-  // const location = useLocation();
-
+  
   return (
     <nav className="navbar">
       <ul className="nav-icons">

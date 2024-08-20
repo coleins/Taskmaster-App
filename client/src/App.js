@@ -21,6 +21,7 @@ const App = () => {
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
         <Route path="/home" component={HomePage} />
+        <Route path="/timer" component={Timer}/>
         <Route path="/dashboards" component={DashboardPage} />
         <Route path="/notifications" element={<NotificationChecker />} />
         <Route path="/tasks/:id" component={TaskPage} />

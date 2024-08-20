@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/Timer.css'; // Make sure the path is correct
+import '../styles/Timer.css';
+import NavBar from './NavBar';
+import SideBar from './SideBar';
 
 const Timer = () => {
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
-  const [inputTime, setInputTime] = useState('');
+  const [hours, setHours] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [secondsInput, setSecondsInput] = useState(0);
   const [beep] = useState(new Audio('/beep-sound.mp3')); // Ensure the beep sound file is in the public directory
 
   useEffect(() => {
@@ -12,7 +16,7 @@ const Timer = () => {
     if (isActive) {
       if (seconds > 0) {
         interval = setInterval(() => {
-          setSeconds(prev => prev - 1);
+          setSeconds((prev) => prev - 1);
         }, 1000);
       } else {
         setIsActive(false);
@@ -25,8 +29,13 @@ const Timer = () => {
   }, [isActive, seconds, beep]);
 
   const startTimer = () => {
-    if (inputTime > 0) {
-      setSeconds(parseInt(inputTime, 10));
+    const totalSeconds =
+      parseInt(hours, 10) * 3600 +
+      parseInt(minutes, 10) * 60 +
+      parseInt(secondsInput, 10);
+
+    if (totalSeconds > 0) {
+      setSeconds(totalSeconds);
       setIsActive(true);
     }
   };
@@ -34,12 +43,16 @@ const Timer = () => {
   const resetTimer = () => {
     setIsActive(false);
     setSeconds(0);
-    setInputTime('');
+    setHours(0);
+    setMinutes(0);
+    setSecondsInput(0);
   };
 
   return (
     <div className="timer-container">
-      <h1>Pomodoro Timer</h1>
+      <NavBar />
+      <SideBar />
+      <h1>Timer</h1>
       <div className="timer-display">
         {`${Math.floor(seconds / 3600)
           .toString()
@@ -49,13 +62,45 @@ const Timer = () => {
           .toString()
           .padStart(2, '0')}`}
       </div>
-      <input
-        type="number"
-        value={inputTime}
-        onChange={(e) => setInputTime(e.target.value)}
-        placeholder="Enter time in seconds"
-        min="1"
-      />
+
+      <div className="time-inputs">
+        <div className="time-input">
+          <label>Hours:</label>
+          <select value={hours} onChange={(e) => setHours(e.target.value)}>
+            {[...Array(24).keys()].map((hour) => (
+              <option key={hour} value={hour}>
+                {hour.toString().padStart(2, '0')}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="time-input">
+          <label>Minutes:</label>
+          <select value={minutes} onChange={(e) => setMinutes(e.target.value)}>
+            {[...Array(60).keys()].map((minute) => (
+              <option key={minute} value={minute}>
+                {minute.toString().padStart(2, '0')}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="time-input">
+          <label>Seconds:</label>
+          <select
+            value={secondsInput}
+            onChange={(e) => setSecondsInput(e.target.value)}
+          >
+            {[...Array(60).keys()].map((second) => (
+              <option key={second} value={second}>
+                {second.toString().padStart(2, '0')}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
       <button onClick={startTimer}>Start</button>
       <button onClick={resetTimer}>Reset</button>
     </div>
