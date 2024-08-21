@@ -1,42 +1,67 @@
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 200px;
-    height: 100vh;
-    background: rgba(33, 33, 33, 0.85);
-    backdrop-filter: blur(10px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    border-top-right-radius: 120px;
-    border-bottom-right-radius: 130px;
+/* Add styles for the sidebar toggle button */
+.sidebar-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: rgba(33, 33, 33, 0.85);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1001; /* Ensure it appears above other content */
 }
 
-/* Logo container */
+.sidebar-toggle i {
+  font-size: 1.5rem;
+}
+
+/* Sidebar styling */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100vh;
+  background: rgba(33, 33, 33, 0.85);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  border-top-right-radius: 120px;
+  border-bottom-right-radius: 130px;
+  transition: transform 0.3s ease;
+}
+
+.sidebar.hidden {
+  transform: translateX(-100%); /* Hide sidebar by moving it off screen */
+}
+
+.sidebar.visible {
+  transform: translateX(0); /* Show sidebar */
+}
+
+/* Existing styles */
 .logo-container {
     margin-bottom: 50px;
 }
 
-/* Logo styling */
 .logo {
     width: 140px;
     height: auto;
 }
 
-/* Navigation buttons container */
 .nav-buttons {
     width: 90%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 25px; /* Space between buttons */
+    gap: 25px; 
 }
 
-/* Button styling */
 .nav-button {
     background-color: transparent;
     color: aliceblue;
@@ -69,7 +94,6 @@
 }
 
 .nav-button span {
-    
     transform: translateX(-20px); 
     transition: all 0.3s ease;
     white-space: nowrap; 
@@ -84,11 +108,11 @@
 }
 
 .nav-button:hover span {
-    opacity: 1; /* Show the text */
-    transform: translateX(0); /* Move text to the original position */
+    opacity: 1; 
+    transform: translateX(0); 
 }
 
 .nav-button:active {
-    transform: translateY(0); /* Button press effect */
+    transform: translateY(0); 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }

@@ -1,22 +1,42 @@
 .timer-container {
-    text-align: center;
-  }
-  
-  .timer-display {
-    font-size: 3rem;
-    margin-bottom: 10px;
-  }
-  
-  input[type="number"] {
-    margin: 10px 0;
-    padding: 5px;
-    font-size: 1rem;
-  }
-  
-  button {
-    margin: 5px;
-    padding: 10px 15px;
-    font-size: 1rem;
-    cursor: pointer;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timer-display {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.time-inputs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.time-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+select {
+  padding: 5px;
+  font-size: 1rem;
+}
+
+button {
+  margin: 5px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
