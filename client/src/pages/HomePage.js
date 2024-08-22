@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import SideBar from "../components/Nav/SideBar";
 import RecentsCard from "../components/Home/RecentsCard";
 import StatsCard from "../components/Home/StatsCard";
 import "../components/styles/Homepage.css";
 import { animateCards } from "../animations";
 import NavBar from "../components/Nav/NavBar";
-
+import { api } from "../utils/api";
 const HomePage = () => {
   const [view, setView] = useState("daily");
   const [recentTasks, setRecentTasks] = useState([]);
@@ -18,9 +17,9 @@ const HomePage = () => {
 
   useEffect(() => {
     // Fetch recent tasks
-    axios
+    api
       .get(
-        "https://taskmaster-app-capstone-project.onrender.com/recent-tasks",
+        "/recent-tasks",
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }
@@ -37,8 +36,8 @@ const HomePage = () => {
   }, [view]); // Refetch stats when view changes
 
   const fetchTaskStats = (view) => {
-    axios
-      .get(`https://taskmaster-app-capstone-project.onrender.com/tasks/stats`, {
+    api
+      .get(`/tasks/stats`, {
         params: { view },
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       })

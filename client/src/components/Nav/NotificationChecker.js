@@ -1,13 +1,13 @@
 // NotificationChecker.js
 import React, { useState, useEffect } from 'react';
-
+import { api } from "../../utils/api";
 const NotificationChecker = () => {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
     const checkNotifications = async () => {
       try {
-        const response = await fetch('https://taskmaster-app-capstone-project.onrender.com/check-tasks-due', {
+        const response = await api.fetch('/check-tasks-due', {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
           }

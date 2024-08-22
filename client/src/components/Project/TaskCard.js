@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Card, Button, Form, Modal } from "react-bootstrap";
-import axios from "axios";
+import { api } from "../../utils/api";
 import "../styles/TaskCard.css";
 
 const TaskCard = ({ task, onTaskUpdate, onTaskDelete }) => {
@@ -10,10 +10,9 @@ const TaskCard = ({ task, onTaskUpdate, onTaskDelete }) => {
   const handleInvite = () => {
     const email = prompt("Enter the email address to invite:");
     if (email) {
-      axios.post(
-        `https://taskmaster-app-capstone-project.onrender.com/tasks/${task.id}/invite`,
-        { email },
-        { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
+      api.post(
+        `/tasks/${task.id}/invite`,
+        { email }
       )
       .then(response => alert(response.data.message))
       .catch(error => console.error("Error sending invitation:", error));
@@ -21,24 +20,22 @@ const TaskCard = ({ task, onTaskUpdate, onTaskDelete }) => {
   };
 
   const handleEditTask = () => {
-    axios.patch(
-      `https://taskmaster-app-capstone-project.onrender.com/tasks/${task.id}`,
-      editedTask,
-      { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
+    api.patch(
+      `/tasks/${task.id}`,
+      editedTask
     )
     .then(response => {
-      onTaskUpdate(response.data);  // Update the task in the parent component
-      setShowEditModal(false);      // Close the modal
+      onTaskUpdate(response.data);
+      setShowEditModal(false);      
     })
     .catch(error => console.error("Error updating task:", error));
   };
 
   const handleDeleteTask = () => {
-    axios.delete(
-      `https://taskmaster-app-capstone-project.onrender.com/tasks/${task.id}`,
-      { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
+    api.delete(
+      `/tasks/${task.id}`
     )
-    .then(() => onTaskDelete(task.id)) // Remove the task in the parent component
+    .then(() => onTaskDelete(task.id))
     .catch(error => console.error("Error deleting task:", error));
   };
 

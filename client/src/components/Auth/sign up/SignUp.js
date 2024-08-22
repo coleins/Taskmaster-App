@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom'; 
-import { api } from '../../../utils/api';
-import './SignUp.css'
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { api } from "../../../utils/api";
+import "./SignUp.css";
 
 const Register = () => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false); 
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false); // Loading state
-  const history = useHistory(); 
+  const history = useHistory();
 
   const handleRegister = async (e) => {
     e.preventDefault();
     setLoading(true); // Start loading
     try {
-      await api.post('https://taskmaster-app-capstone-project.onrender.com/users', { username, email, password });
-      history.push('/login'); 
+      await api.post("/users", { username, email, password });
+      history.push("/login");
     } catch (error) {
-      console.error('Register error', error);
+      console.error("Register error", error);
     } finally {
       setLoading(false); // End loading
     }
@@ -41,9 +41,9 @@ const Register = () => {
         onChange={(e) => setEmail(e.target.value)}
         required
       />
-      <div style={{ position: 'relative' }}>
+      <div style={{ position: "relative" }}>
         <input
-          type={showPassword ? 'text' : 'password'} 
+          type={showPassword ? "text" : "password"}
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -52,13 +52,13 @@ const Register = () => {
         <button
           type="button"
           onClick={() => setShowPassword(!showPassword)}
-          className="toggle-password-button" 
+          className="toggle-password-button"
         >
-          {showPassword ? 'Hide' : 'Show'} 
+          {showPassword ? "Hide" : "Show"}
         </button>
       </div>
-      <button type="submit" disabled={loading} className='registerbtn'>
-        {loading ? 'Registering...' : 'Register'} 
+      <button type="submit" disabled={loading} className="registerbtn">
+        {loading ? "Registering..." : "Register"}
       </button>
     </form>
   );

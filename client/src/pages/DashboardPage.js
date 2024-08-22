@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import axios from "axios";
 import { Button, Form, ListGroup } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -8,6 +7,7 @@ import { useHistory } from "react-router-dom"; // Import useHistory
 import "../components/styles/DashboardPage.css";
 import NavBar from "../components/Nav/NavBar";
 import SideBar from "../components/Nav/SideBar";
+import { api } from "../utils/api";
 
 const DashboardsPage = () => {
   const [dashboards, setDashboards] = useState([]);
@@ -22,8 +22,8 @@ const DashboardsPage = () => {
   const history = useHistory(); // Initialize useHistory
 
   useEffect(() => {
-    axios
-      .get("https://taskmaster-app-capstone-project.onrender.com/dashboards", {
+    api
+      .get("/dashboards", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       })
       .then((response) => setDashboards(response.data))
@@ -53,9 +53,9 @@ const DashboardsPage = () => {
   }, [showAddModal, showEditModal]);
 
   const handleAddDashboard = () => {
-    axios
+    api
       .post(
-        "https://taskmaster-app-capstone-project.onrender.com/dashboards",
+        "/dashboards",
         { project_name: newDashboardName },
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -73,9 +73,9 @@ const DashboardsPage = () => {
   };
 
   const handleEditDashboard = () => {
-    axios
+    api
       .put(
-        `https://taskmaster-app-capstone-project.onrender.com/dashboards/${selectedDashboard.id}`,
+        `/dashboards/${selectedDashboard.id}`,
         { project_name: selectedDashboard.project_name },
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -96,9 +96,9 @@ const DashboardsPage = () => {
   };
 
   const handleDeleteDashboard = (id) => {
-    axios
+    api
       .delete(
-        `https://taskmaster-app-capstone-project.onrender.com/dashboards/${id}`,
+        `/dashboards/${id}`,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }

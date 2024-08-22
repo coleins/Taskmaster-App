@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useHistory } from 'react-router-dom';
-import '../styles/User.css'; 
-import "../Nav/NavBar";
-import "../Nav/SideBar";
+import { api } from '../../utils/api'; // Updated import
+import '../styles/User.css';
 import NavBar from '../Nav/NavBar';
 import SideBar from '../Nav/SideBar';
 
@@ -22,7 +20,7 @@ const User = () => {
         const token = localStorage.getItem('token');
         if (!token) throw new Error('No access token found');
 
-        const response = await axios.get('https://taskmaster-app-capstone-project.onrender.com/current_user', {
+        const response = await api.get('/current_user', {
           headers: { Authorization: `Bearer ${token}` }
         });
         setUser(response.data);
@@ -42,7 +40,7 @@ const User = () => {
       const token = localStorage.getItem('token');
       if (!token) throw new Error('No access token found');
 
-      await axios.put(`https://taskmaster-app-capstone-project.onrender.com/users/${user.id}`, {
+      await api.put(`/users/${user.id}`, {
         username,
         email,
         password
@@ -63,7 +61,7 @@ const User = () => {
         const token = localStorage.getItem('token');
         if (!token) throw new Error('No access token found');
 
-        await axios.delete(`https://taskmaster-app-capstone-project.onrender.com/users/${user.id}`, {
+        await api.delete(`/users/${user.id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         localStorage.removeItem('token');
@@ -93,68 +91,67 @@ const User = () => {
 
   return (
     <div>
-        <NavBar/>
-        <SideBar/>
-    <div className={`user-settings ${editModalOpen ? 'blurred' : ''}`}>
-      <h1>Your Details</h1>
-      <div className="details-section">
-        <p><strong>Username:</strong> {username}</p>
-        <p><strong>Email:</strong> {email}</p>
-        <button className="edit-btn" onClick={() => setEditModalOpen(true)}>Edit Details</button>
-      </div>
-      
-      {/* Edit Details Popup */}
-      {editModalOpen && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <h2>Edit Details</h2>
-            <form onSubmit={handleUpdate}>
-              <div className="form-group">
-                <label htmlFor="edit-username">Username</label>
-                <input
-                  type="text"
-                  id="edit-username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="edit-email">Email</label>
-                <input
-                  type="email"
-                  id="edit-email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="edit-password">Password</label>
-                <input
-                  type="password"
-                  id="edit-password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              <button type="submit">Update</button>
-              <button type="button" onClick={() => setEditModalOpen(false)}>Cancel</button>
-            </form>
-          </div>
+      <NavBar />
+      <SideBar />
+      <div className={`user-settings ${editModalOpen ? 'blurred' : ''}`}>
+        <h1>Your Details</h1>
+        <div className="details-section">
+          <p><strong>Username:</strong> {username}</p>
+          <p><strong>Email:</strong> {email}</p>
+          <button className="edit-btn" onClick={() => setEditModalOpen(true)}>Edit Details</button>
         </div>
-      )}
 
-      <div className="settings-section">
-        <h2>Privacy Settings</h2>
-        <button className="verify-email-btn" onClick={handleEmailVerification}>Verify Email</button>
-        {/* Add more privacy settings as needed */}
+        {/* Edit Details Popup */}
+        {editModalOpen && (
+          <div className="modal-overlay">
+            <div className="modal-content">
+              <h2>Edit Details</h2>
+              <form onSubmit={handleUpdate}>
+                <div className="form-group">
+                  <label htmlFor="edit-username">Username</label>
+                  <input
+                    type="text"
+                    id="edit-username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="edit-email">Email</label>
+                  <input
+                    type="email"
+                    id="edit-email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="edit-password">Password</label>
+                  <input
+                    type="password"
+                    id="edit-password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </div>
+                <button type="submit">Update</button>
+                <button type="button" onClick={() => setEditModalOpen(false)}>Cancel</button>
+              </form>
+            </div>
+          </div>
+        )}
+
+        <div className="settings-section">
+          <h2>Privacy Settings</h2>
+          <button className="verify-email-btn" onClick={handleEmailVerification}>Verify Email</button>
+          {/* Add more privacy settings as needed */}
+        </div>
+        <div className="danger-zone">
+          <button className="delete-account" onClick={handleDelete}>Delete Account</button>
+        </div>
       </div>
-      <div>Danger zone
-      <button className="delete-account" onClick={handleDelete}>Delete Account</button>
-      </div>
-      
-    </div>
     </div>
   );
 };
