@@ -207,17 +207,6 @@ def create_dashboard():
     return jsonify({"message": "Dashboard created successfully", "dashboard": new_dashboard.id}), 201
 
 
-@app.route('/tasks/<int:id>', methods=['PATCH'])
-@jwt_required()
-def update_task(id):
-    task = Task.query.get_or_404(id)
-    data = request.get_json()
-    task.title = data.get('title', task.title)
-    task.description = data.get('description', task.description)
-    db.session.commit()
-    return jsonify({"message": "Task updated successfully"}), 200
-
-
 @app.route("/dashboards/<int:dashboard_id>", methods=["GET"])
 @jwt_required()
 def get_dashboard(dashboard_id):
@@ -318,6 +307,42 @@ def get_tasks(dashboard_id):
         "user_id": task.user_id,
         "dashboard_id": task.dashboard_id
     } for task in tasks])
+
+
+@app.route('/dashboards/<int:dashboard_id>/tasks/<int:id>', methods=['PATCH'])
+@jwt_required()
+def update_task(dashboard_id, id):
+    task = Task.query.filter_by(dashboard_id=dashboard_id, id=id).first_or_404()
+
+    data = request.get_json()
+
+    # Check if there's data to update
+    if not data:
+        return jsonify({"message": "No data provided to update"}), 400
+
+    # Update the fields if present in the request body
+    task.title = data.get('title', task.title)
+    task.description = data.get('description', task.description)
+    task.priority = data.get('priority', task.priority)
+    task.status = data.get('status', task.status)
+
+    # Commit changes to the database
+    db.session.commit()
+
+    # Return the updated task data
+    return jsonify({
+        "message": "Task updated successfully",
+        "task": {
+            "id": task.id,
+            "title": task.title,
+            "description": task.description,
+            "due_date": task.due_date,
+            "priority": task.priority,
+            "status": task.status,
+            "dashboard_id": task.dashboard_id
+        }
+    }), 200
+
 
 @app.route("/tasks/<int:task_id>/invite", methods=["POST"])
 @jwt_required()
