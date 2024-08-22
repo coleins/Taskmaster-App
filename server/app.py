@@ -206,6 +206,18 @@ def create_dashboard():
 
     return jsonify({"message": "Dashboard created successfully", "dashboard": new_dashboard.id}), 201
 
+
+@app.route('/tasks/<int:id>', methods=['PATCH'])
+@jwt_required()
+def update_task(id):
+    task = Task.query.get_or_404(id)
+    data = request.get_json()
+    task.title = data.get('title', task.title)
+    task.description = data.get('description', task.description)
+    db.session.commit()
+    return jsonify({"message": "Task updated successfully"}), 200
+
+
 @app.route("/dashboards/<int:dashboard_id>", methods=["GET"])
 @jwt_required()
 def get_dashboard(dashboard_id):
