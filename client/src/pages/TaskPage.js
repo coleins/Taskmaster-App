@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
-import axios from "axios";
 import { Button, Form } from "react-bootstrap";
 import { gsap } from "gsap";
 import { useParams } from "react-router-dom";
-import TaskCard from "../components/Project/TaskCard";  // Import TaskCard component
+import TaskCard from "../components/Project/TaskCard"; // Import TaskCard component
 import "../components/styles/Taskspage.css";
 import NavBar from "../components/Nav/NavBar";
 import SideBar from "../components/Nav/SideBar";
+import { api } from "../utils/api";
 
 const TaskPage = () => {
   const { id } = useParams();
@@ -24,13 +24,13 @@ const TaskPage = () => {
   const addModalRef = useRef(null);
 
   useEffect(() => {
-    axios
-      .get(`https://taskmaster-app-capstone-project.onrender.com/dashboards/${id}/tasks`, {
+    api
+      .get(`/dashboards/${id}/tasks`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       })
       .then((response) => setTasks(response.data))
       .catch((error) => console.error("Error fetching tasks:", error));
-  
+
     gsap.fromTo(
       taskContainerRef.current,
       { y: 100, opacity: 0 },
@@ -39,7 +39,9 @@ const TaskPage = () => {
   }, [id]);
 
   const onTaskUpdate = (updatedTask) => {
-    setTasks(tasks.map((task) => (task.id === updatedTask.id ? updatedTask : task)));
+    setTasks(
+      tasks.map((task) => (task.id === updatedTask.id ? updatedTask : task))
+    );
   };
 
   const onTaskDelete = (taskId) => {
@@ -47,17 +49,19 @@ const TaskPage = () => {
   };
 
   const handleAddTask = () => {
-    axios.post(
-        `https://taskmaster-app-capstone-project.onrender.com/tasks/${id}`,
-        {...newTask, dashboard_id: id},
-        { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
+    api
+      .post(
+        `/tasks/${id}`,
+        { ...newTask, dashboard_id: id },
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
       )
       .then((response) => {
         const taskId = response.data.task; // Extract task ID from the response
-        return axios.get(
-          `https://taskmaster-app-capstone-project.onrender.com/tasks/${taskId}`,
-          { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
-        );
+        return api.get(`/tasks/${taskId}`, {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        });
       })
       .then((response) => {
         setTasks([...tasks, response.data]); // Add the full task object to the tasks list
@@ -81,14 +85,19 @@ const TaskPage = () => {
       <div className="task-page-container" ref={taskContainerRef}>
         <h2 className="task-page-title">Tasks</h2>
         <div className="task-page-buttons">
-          <Button onClick={() => setShowAddModal(true)} className="add-task-button">
+          <Button
+            onClick={() => setShowAddModal(true)}
+            className="add-task-button"
+          >
             Add Task
           </Button>
         </div>
-        
+
         <div className="task-cards-container">
           {tasks.length === 0 ? (
-            <p className="no-tasks-placeholder">No tasks available. Please add a task.</p>
+            <p className="no-tasks-placeholder">
+              No tasks available. Please add a task.
+            </p>
           ) : (
             tasks.map((task) => (
               <TaskCard
@@ -118,7 +127,10 @@ const TaskPage = () => {
                   className="form-control"
                 />
               </Form.Group>
-              <Form.Group controlId="formTaskDescription" className="form-group">
+              <Form.Group
+                controlId="formTaskDescription"
+                className="form-group"
+              >
                 <Form.Label>Description</Form.Label>
                 <Form.Control
                   as="textarea"
@@ -174,7 +186,11 @@ const TaskPage = () => {
                 </Form.Group>
               </div>
               <div className="modal-actions">
-                <Button variant="primary" onClick={handleAddTask} className="action-buttons">
+                <Button
+                  variant="primary"
+                  onClick={handleAddTask}
+                  className="action-buttons"
+                >
                   Create Task
                 </Button>
                 <Button
