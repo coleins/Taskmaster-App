@@ -25,11 +25,13 @@ app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY", "fsbdgfnhgvjnvhmvh" +
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(days=int(os.getenv("JWT_ACCESS_TOKEN_EXPIRES", 1)))
 app.json.compact = False
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "JKSRVHJVFBSRDFV" + str(random.randint(1, 1000000000000)))
-app.config['MAIL_SERVER'] = 'smtp-mail.outlook.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'taskmaster200@outlook.com'
-app.config['MAIL_PASSWORD'] = 'Getitdone'
+# Email configuration
+app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER', 'smtp-mail.outlook.com')
+app.config['MAIL_PORT'] = int(os.getenv('MAIL_PORT', 587))
+app.config['MAIL_USE_TLS'] = os.getenv('MAIL_USE_TLS', 'True') == 'True'
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME', 'taskmaster200@outlook.com')
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD', 'Getitdone')
+
 
 
 # Initialize extensions
@@ -523,4 +525,4 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(port=5555, debug=True)
+    app.run(port=5555, debug=False)
