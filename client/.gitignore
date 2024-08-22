@@ -1,0 +1,14 @@
+# environment variable files
+.env
+# Ignore node_modules directory
+node_modules/
+
+# Build output
+/build
+
+# Logs
+*.log
+
+# Dependency directories
+/.pnp
+.pnp.js
