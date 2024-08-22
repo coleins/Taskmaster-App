@@ -311,7 +311,7 @@ def get_tasks(dashboard_id):
 
 @app.route('/dashboards/<int:dashboard_id>/tasks/<int:id>', methods=['PATCH'])
 @jwt_required()
-def update_task(dashboard_id, id):
+def update_task_for_dashboard(dashboard_id, id):
     task = Task.query.filter_by(dashboard_id=dashboard_id, id=id).first_or_404()
 
     data = request.get_json()
