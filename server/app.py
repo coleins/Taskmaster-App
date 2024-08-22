@@ -316,20 +316,16 @@ def update_task_for_dashboard(dashboard_id, id):
 
     data = request.get_json()
 
-    # Check if there's data to update
     if not data:
         return jsonify({"message": "No data provided to update"}), 400
 
-    # Update the fields if present in the request body
     task.title = data.get('title', task.title)
     task.description = data.get('description', task.description)
     task.priority = data.get('priority', task.priority)
     task.status = data.get('status', task.status)
 
-    # Commit changes to the database
     db.session.commit()
 
-    # Return the updated task data
     return jsonify({
         "message": "Task updated successfully",
         "task": {
@@ -342,6 +338,7 @@ def update_task_for_dashboard(dashboard_id, id):
             "dashboard_id": task.dashboard_id
         }
     }), 200
+
 
 
 @app.route("/tasks/<int:task_id>/invite", methods=["POST"])
