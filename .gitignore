@@ -65,5 +65,18 @@ __pycache__
 instance
 .vscode
 package-lock.json
-# environment variables
+
+# Ignore environment variable files
 .env
+
+# Ignore Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore virtual environment
+venv/
+env/
+
+# Ignore other common files
+*.log
