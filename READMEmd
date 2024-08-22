@@ -1,0 +1,117 @@
+# TASKMASTER APP
+
+---
+
+### Author : Collins Ngetich August 16th 2024
+
+---
+
+## Project Description
+
+TaskMaster is a robust task and project management application designed to help teams and individuals effectively manage their daily tasks and long-term projects. Built using a modern tech stack that includes a Flask backend and React frontend, TaskMaster offers intuitive and user-friendly features for project management, progress tracking, and collaboration.
+TaskMaster is designed to be the ultimate productivity tool for individuals and teams. It helps streamline project management by providing a simple yet powerful interface to create, manage, and track tasks and progress, all while fostering collaboration and focus through key features like notifications and a Pomodoro timer. Whether you're working solo or with a team, TaskMaster provides everything you need to stay organized, productive, and on track with your goals.
+
+---
+
+## SCREENSHOTS
+
+- <img width="761" alt="Screenshot from 2024-08-21 00-29-22](https://github.com/user-attachments/assets/e7504e3a-b794-43d4-b0e0-15299258c921)">
+
+- <img width="761" alt="Screenshot from 2024-08-21 00-19-47](https://github.com/user-attachments/assets/b855a92e-b4c5-44c8-bdb9-c30d0d8262cb)">
+
+- <img width="761" alt="Screenshot from 2024-08-21 00-19-08](https://github.com/user-attachments/assets/18db821f-5197-41c4-97b5-21eb6e220191)">
+
+- <img width="761" alt="Screenshot from 2024-08-21 00-09-46](https://github.com/user-attachments/assets/5d7f4b7e-ab4b-40e6-8314-3c0b05f87bf5)">
+
+---
+
+## Features
+
+- User Registration & Authentication: Secure user registration, login, and authentication using JWT.
+- Dashboard Overview: Manage multiple projects from a centralized dashboard that provides a clear overview of active tasks and projects.
+- Task Management: Create, assign, update, and delete tasks with options to set priority levels and deadlines.
+- Task Details: View detailed information for each task, including due dates, descriptions, assigned users, and status updates.
+- Collaboration: Assign tasks to team members and track task progress in real-time, with comments and notifications to enhance communication.
+- Timer: Stay focused with an integrated imer for better time management.
+- Notifications: Get alerts when tasks are due or require attention, helping users stay on track.
+- Task Statistics: Visualize the progress of tasks with statistics for completed, in-progress, and pending tasks.
+- Recent Activity: Track recent task activities directly from the homepage for quick access to updates.
+- Mobile Responsive: TaskMaster is designed to work seamlessly across desktop and mobile devices.
+
+### Requirements
+
+- Text editor eg [Visual Studio Code](https://code.visualstudio.com/download)
+- Python: Ensure Python 3.x is installed (https://www.python.org/downloads/release/python-3125/)
+- Flask: Install Flask and its dependencies:
+  -Flask==2.1.0
+  -Flask-SQLAlchemy==2.5.1
+  -Flask-Migrate==3.1.0
+  -Flask-RESTful==0.3.9
+  -Flask-JWT-Extended==4.4.4
+  -psycopg2-binary==2.9.3
+  -Flask-Mail==0.9.1
+
+## SetUp Instruction
+
+In the server directory
+
+-python -m venv venv
+-pip install -r requirements.txt
+-flask db upgrade
+-flask run
+
+In the client directory
+
+-npm install
+-npm start
+
+### Getting Files
+
+- Fork the repo
+
+* Create a new branch in your terminal (git checkout -b improve-feature)
+* Install the prerequisites
+* Make appropriate changes in file(s)
+* Run the server to see the changes
+* Add the changes and commit them (git commit -am "Improve App")
+* Push to the branch (git push origin improve-app)
+* Create a Pull request
+
+- Open the folder location on terminal and use the following command to run app:
+
+## How To Run It
+
+> Clone repository
+
+> Run using live server
+
+---
+
+## Live Link
+
+Or you can access the web application directly via this ([https://task-master-app-capstone-project.vercel.app/])
+
+---
+
+## Dependencies
+
+- Google fonts
+
+---
+
+## Technologies Used
+
+1.Frontend: React with react-router-dom for dynamic navigation, state management using useState and useEffect, and form handling using Formik with Yup for validation. 2. Backend: Flask REST API with JWT-based authentication, SQLAlchemy for database integration, and Flask-Migrate for database migrations. 3. Database: PostgreSQL is used for storing user, task, and project data. 4. Deployment: Backend deployed on Render and the frontend using Vercel.
+
+---
+
+## Contact Information
+
+- Email : collinsngetichk@gmail.com, emmanuelokinyi799@gmailcom, emmanuelokinyi799@gmail.com
+
+---
+
+## [License](LICENSE)
+
+MIT License
+Copyright (c) 2024 Collins Ngetich, Emmanuel Okinyi, Catherine Wanjiku
