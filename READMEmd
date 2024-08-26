@@ -82,6 +82,22 @@ In the client directory
 ## How To Run It
 
 > Clone repository
+> After cloning the repository, create a .env file in the root directory of both the Flask backend and the React frontend. Populate the files with the following environment variables:
+
+Flask Backend (backend/.env):
+
+FLASK_APP=app.py
+FLASK_ENV=development
+DATABASE_URL=your_database_url
+SECRET_KEY=your_secret_key
+MAIL_USERNAME=your_mail_username
+MAIL_PASSWORD=your_mail_password
+
+React Frontend (frontend/.env):
+
+REACT_APP_API_URL=http://localhost:5000
+REACT_APP_ANOTHER_VARIABLE=value
+Make sure to replace the placeholders with actual values that match your local setup.
 
 > Run using live server
 
