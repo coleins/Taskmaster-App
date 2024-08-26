@@ -16,7 +16,7 @@ from flask_mail import Mail, Message
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": ["https://task-master-app-capstone-project.vercel.app", "http://localhost:3000"]}})
 
 # Configuration
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URI")
