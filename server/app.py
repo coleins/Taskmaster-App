@@ -16,23 +16,24 @@ from flask_mail import Mail, Message
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": ["https://task-master-app-capstone-project.vercel.app", "http://localhost:3000"]}})
+CORS(app, resources={r"/*": {"origins": ["http://localhost:3000"]}})
 
 # Configuration
-app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URI")
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("SQLALCHEMY_DATABASE_URI")
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = os.getenv("SQLALCHEMY_TRACK_MODIFICATIONS") == "True"
 app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY")
-app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(days=int(os.getenv("JWT_ACCESS_TOKEN_EXPIRES", 1)))
-app.json.compact = False
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(days=int(os.getenv("JWT_ACCESS_TOKEN_EXPIRES")))
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
-# Email configuration
+app.json.compact = os.getenv("JSON_COMPACT") == "True"
+
+
+# # Email configuration
 app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER')
-app.config['MAIL_PORT'] = int(os.getenv('MAIL_PORT'))
-app.config['MAIL_USE_TLS'] = os.getenv('MAIL_USE_TLS', 'True') == 'True'
+app.config['MAIL_PORT'] = int(os.getenv('MAIL_PORT'))  # Convert to integer
 app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
 app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
-
-
+app.config['MAIL_USE_TLS'] = os.getenv('MAIL_USE_TLS') == 'True'
+app.config['MAIL_USE_SSL'] = os.getenv('MAIL_USE_SSL') == 'True'
 
 # Initialize extensions
 bcrypt = Bcrypt(app)
@@ -559,4 +560,4 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(port=5555, debug=False)
+    app.run(port=5555, debug=True)

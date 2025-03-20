@@ -255,3 +255,479 @@ WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 143-388-926
 ERROR:flask_migrate:Error: Directory migrations already exists and is not empty
 ERROR:flask_migrate:Error: Directory migrations already exists and is not empty
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5555
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-141-971
+INFO:root:Request: GET http://127.0.0.1:5555/
+INFO:root:Response: 200 OK b'<h2>Hello, Flask is running!</h2>'
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2025 22:13:26] "GET / HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/favicon.ico
+INFO:root:Response: 404 NOT FOUND b'{\n  "message": "Resource not found"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2025 22:13:27] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in '/home/coleins/documents/development/phase-5/TaskMaster-App-Capstone-Project/server/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-141-971
+INFO:werkzeug: * Detected change in '/home/coleins/documents/development/phase-5/TaskMaster-App-Capstone-Project/server/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-141-971
+INFO:werkzeug: * Detected change in '/home/coleins/documents/development/phase-5/TaskMaster-App-Capstone-Project/server/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-141-971
+INFO:werkzeug: * Detected change in '/home/coleins/documents/development/phase-5/TaskMaster-App-Capstone-Project/server/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-141-971
+INFO:werkzeug: * Detected change in '/home/coleins/documents/development/phase-5/TaskMaster-App-Capstone-Project/server/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-141-971
+INFO:werkzeug: * Detected change in '/home/coleins/documents/development/phase-5/TaskMaster-App-Capstone-Project/server/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-141-971
+INFO:werkzeug: * Detected change in '/home/coleins/documents/development/phase-5/TaskMaster-App-Capstone-Project/server/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-141-971
+INFO:root:Request: GET http://127.0.0.1:5555/
+INFO:root:Response: 200 OK b'<h2>Hello, Flask is running!</h2>'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 00:40:59] "GET / HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/coleins/documents/development/phase-5/TaskMaster-App-Capstone-Project/server/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-141-971
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/users
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:05:01] "OPTIONS /users HTTP/1.1" 200 -
+INFO:root:Request: POST http://127.0.0.1:5555/users
+INFO:root:Response: 201 CREATED b'{\n  "message": "User created successfully",\n  "user": 1\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:05:02] "[35m[1mPOST /users HTTP/1.1[0m" 201 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/login
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:05:23] "OPTIONS /login HTTP/1.1" 200 -
+INFO:root:Request: POST http://127.0.0.1:5555/login
+INFO:root:Response: 200 OK b'{\n  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0MjMzNTUyNCwianRpIjoiZjE3ZDJiN2YtNjIzNS00YWQwLTlmYjktOWI2NTQyZmE4YTYwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzQyMzM1NTI0LCJjc3JmIjoiZGE2YzU2YjAtYTQzZC00OTE2LWEyMzUtZTNjYzdmMDFmOTE1IiwiZXhwIjoxNzQyNDIxOTI0fQ.ymYxw1g3keaI2cXqYNq0oE4te36GVvJ7-1B5gRno4UY"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:05:24] "POST /login HTTP/1.1" 200 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/recent-tasks
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:05:27] "OPTIONS /recent-tasks HTTP/1.1" 200 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/tasks/stats?view=daily
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:05:27] "OPTIONS /tasks/stats?view=daily HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/recent-tasks
+INFO:root:Request: GET http://127.0.0.1:5555/tasks/stats?view=daily
+INFO:root:Response: 200 OK b'[]\n'
+INFO:root:Response: 200 OK b'{\n  "completed": 0,\n  "inProgress": 0,\n  "pending": 0\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:05:27] "GET /recent-tasks HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:05:27] "GET /tasks/stats?view=daily HTTP/1.1" 200 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/recent-tasks
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/tasks/stats?view=weekly
+INFO:root:Response: 200 OK b''
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:06:03] "OPTIONS /recent-tasks HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:06:03] "OPTIONS /tasks/stats?view=weekly HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/recent-tasks
+INFO:root:Request: GET http://127.0.0.1:5555/tasks/stats?view=weekly
+INFO:root:Response: 200 OK b'[]\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:06:03] "GET /recent-tasks HTTP/1.1" 200 -
+INFO:root:Response: 200 OK b'{\n  "completed": 0,\n  "inProgress": 0,\n  "pending": 0\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:06:03] "GET /tasks/stats?view=weekly HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/recent-tasks
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/tasks/stats?view=monthly
+INFO:root:Response: 200 OK b'[]\n'
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:06:05] "GET /recent-tasks HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:06:05] "OPTIONS /tasks/stats?view=monthly HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/tasks/stats?view=monthly
+INFO:root:Response: 200 OK b'{\n  "completed": 0,\n  "inProgress": 0,\n  "pending": 0\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:06:05] "GET /tasks/stats?view=monthly HTTP/1.1" 200 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/dashboards
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:06:11] "OPTIONS /dashboards HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/dashboards
+INFO:root:Response: 200 OK b'[]\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:06:11] "GET /dashboards HTTP/1.1" 200 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/dashboards
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:06:36] "OPTIONS /dashboards HTTP/1.1" 200 -
+INFO:root:Request: POST http://127.0.0.1:5555/dashboards
+INFO:root:Response: 201 CREATED b'{\n  "dashboard": 1,\n  "message": "Dashboard created successfully"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:06:36] "[35m[1mPOST /dashboards HTTP/1.1[0m" 201 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/dashboards/1/tasks
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:06:40] "OPTIONS /dashboards/1/tasks HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/dashboards/1/tasks
+INFO:root:Response: 200 OK b'[]\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:06:40] "GET /dashboards/1/tasks HTTP/1.1" 200 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/tasks/1
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:07:19] "OPTIONS /tasks/1 HTTP/1.1" 200 -
+INFO:root:Request: POST http://127.0.0.1:5555/tasks/1
+INFO:root:Response: 201 CREATED b'{\n  "message": "Task created successfully",\n  "task": 1\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:07:19] "[35m[1mPOST /tasks/1 HTTP/1.1[0m" 201 -
+INFO:root:Request: GET http://127.0.0.1:5555/tasks/1
+INFO:root:Response: 200 OK b'{\n  "dashboard_id": 1,\n  "description": "ergrthtrre",\n  "due_date": "Fri, 28 Mar 2025 00:00:00 GMT",\n  "id": 1,\n  "priority": "high",\n  "status": "in_progress",\n  "title": "abc",\n  "user_id": 1\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:07:19] "GET /tasks/1 HTTP/1.1" 200 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/tasks/1
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:08:35] "OPTIONS /tasks/1 HTTP/1.1" 200 -
+INFO:root:Request: POST http://127.0.0.1:5555/tasks/1
+INFO:root:Response: 201 CREATED b'{\n  "message": "Task created successfully",\n  "task": 2\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:08:35] "[35m[1mPOST /tasks/1 HTTP/1.1[0m" 201 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/tasks/2
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:08:35] "OPTIONS /tasks/2 HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/tasks/2
+INFO:root:Response: 200 OK b'{\n  "dashboard_id": 1,\n  "description": "gergerggrbdbdfbv",\n  "due_date": "Thu, 27 Mar 2025 00:00:00 GMT",\n  "id": 2,\n  "priority": "low",\n  "status": "pending",\n  "title": "def",\n  "user_id": 1\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:08:35] "GET /tasks/2 HTTP/1.1" 200 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/tasks/1
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:13:58] "OPTIONS /tasks/1 HTTP/1.1" 200 -
+INFO:root:Request: POST http://127.0.0.1:5555/tasks/1
+INFO:root:Response: 201 CREATED b'{\n  "message": "Task created successfully",\n  "task": 3\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:13:58] "[35m[1mPOST /tasks/1 HTTP/1.1[0m" 201 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/tasks/3
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:13:58] "OPTIONS /tasks/3 HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/tasks/3
+INFO:root:Response: 200 OK b'{\n  "dashboard_id": 1,\n  "description": "ttrjtykityhdfvsfs",\n  "due_date": "Mon, 31 Mar 2025 00:00:00 GMT",\n  "id": 3,\n  "priority": "medium",\n  "status": "completed",\n  "title": "ghi",\n  "user_id": 1\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:13:58] "GET /tasks/3 HTTP/1.1" 200 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/tasks/1
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:14:26] "OPTIONS /tasks/1 HTTP/1.1" 200 -
+INFO:root:Request: POST http://127.0.0.1:5555/tasks/1
+INFO:root:Response: 201 CREATED b'{\n  "message": "Task created successfully",\n  "task": 4\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:14:26] "[35m[1mPOST /tasks/1 HTTP/1.1[0m" 201 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/tasks/4
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:14:26] "OPTIONS /tasks/4 HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/tasks/4
+INFO:root:Response: 200 OK b'{\n  "dashboard_id": 1,\n  "description": "htrjtyhsdcafweb",\n  "due_date": "Thu, 20 Mar 2025 00:00:00 GMT",\n  "id": 4,\n  "priority": "high",\n  "status": "pending",\n  "title": "jkl",\n  "user_id": 1\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:14:26] "GET /tasks/4 HTTP/1.1" 200 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/tasks/1
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:14:51] "OPTIONS /tasks/1 HTTP/1.1" 200 -
+INFO:root:Request: POST http://127.0.0.1:5555/tasks/1
+INFO:root:Response: 201 CREATED b'{\n  "message": "Task created successfully",\n  "task": 5\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:14:51] "[35m[1mPOST /tasks/1 HTTP/1.1[0m" 201 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/tasks/5
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:14:51] "OPTIONS /tasks/5 HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/tasks/5
+INFO:root:Response: 200 OK b'{\n  "dashboard_id": 1,\n  "description": "vsdvdfbhtfgjfgnfnhd",\n  "due_date": "Fri, 21 Mar 2025 00:00:00 GMT",\n  "id": 5,\n  "priority": "low",\n  "status": "in_progress",\n  "title": "mno",\n  "user_id": 1\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 01:14:51] "GET /tasks/5 HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5555
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 120-635-726
+INFO:root:Request: GET http://127.0.0.1:5555/
+INFO:root:Response: 200 OK b'<h2>Hello, Flask is running!</h2>'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 20:11:36] "GET / HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/favicon.ico
+INFO:root:Response: 404 NOT FOUND b'{\n  "message": "Resource not found"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 20:11:37] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:root:Request: GET http://127.0.0.1:5555/users
+INFO:root:Response: 200 OK b'[\n  {\n    "email": "admin@gmail.com",\n    "id": 1,\n    "username": "admin"\n  }\n]\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 20:11:44] "GET /users HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/users/dashboard
+INFO:root:Response: 404 NOT FOUND b'{\n  "message": "Resource not found"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 20:12:03] "[33mGET /users/dashboard HTTP/1.1[0m" 404 -
+INFO:root:Request: GET http://127.0.0.1:5555/users/dashboards
+INFO:root:Response: 404 NOT FOUND b'{\n  "message": "Resource not found"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 20:12:08] "[33mGET /users/dashboards HTTP/1.1[0m" 404 -
+INFO:root:Request: GET http://127.0.0.1:5555/
+INFO:root:Response: 200 OK b'<h2>Hello, Flask is running!</h2>'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 20:12:30] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5555
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 138-170-700
+INFO:root:Request: GET http://127.0.0.1:5555/
+INFO:root:Response: 200 OK b'<h2>Hello, Flask is running!</h2>'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 20:28:39] "GET / HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/favicon.ico
+INFO:root:Response: 404 NOT FOUND b'{\n  "message": "Resource not found"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 20:28:41] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in '/home/coleins/documents/development/phase-5/TaskMaster-App-Capstone-Project/server/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 138-170-700
+INFO:werkzeug: * Detected change in '/home/coleins/documents/development/phase-5/TaskMaster-App-Capstone-Project/server/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 138-170-700
+INFO:werkzeug: * Detected change in '/home/coleins/documents/development/phase-5/TaskMaster-App-Capstone-Project/server/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 138-170-700
+INFO:werkzeug: * Detected change in '/home/coleins/documents/development/phase-5/TaskMaster-App-Capstone-Project/server/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 138-170-700
+INFO:werkzeug: * Detected change in '/home/coleins/documents/development/phase-5/TaskMaster-App-Capstone-Project/server/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5555
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 138-170-700
+INFO:root:Request: GET http://127.0.0.1:5555/
+INFO:root:Response: 200 OK b'<h2>Hello, Flask is running!</h2>'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 21:22:30] "GET / HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/
+INFO:root:Response: 200 OK b'<h2>Hello, Flask is running!</h2>'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 21:22:32] "GET / HTTP/1.1" 200 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/login
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 21:22:45] "OPTIONS /login HTTP/1.1" 200 -
+INFO:root:Request: POST http://127.0.0.1:5555/login
+INFO:root:Response: 200 OK b'{\n  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0MjQwODU2NiwianRpIjoiZDU1YmY3NDItYWEzZC00YmNmLWE1MzItMjllMWIzMGNhMGNjIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzQyNDA4NTY2LCJjc3JmIjoiYzNmOGJhYjctYWEzZS00YmI1LWIzN2ItNWZhOTk2NzM3MGIxIiwiZXhwIjoxNzQyNDk0OTY2fQ.CQLPcyDLn7XnGF6OPrNL1rUhMCkx2xsPs62Ju1VjUz4"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 21:22:46] "POST /login HTTP/1.1" 200 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/tasks/stats?view=daily
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/recent-tasks
+INFO:root:Response: 200 OK b''
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 21:22:49] "OPTIONS /recent-tasks HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 21:22:49] "OPTIONS /tasks/stats?view=daily HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/recent-tasks
+INFO:root:Request: GET http://127.0.0.1:5555/tasks/stats?view=daily
+INFO:root:Response: 200 OK b'{\n  "completed": 0,\n  "inProgress": 0,\n  "pending": 0\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 21:22:49] "GET /tasks/stats?view=daily HTTP/1.1" 200 -
+INFO:root:Response: 200 OK b'[\n  {\n    "dashboard": "ERP System",\n    "name": "mno"\n  },\n  {\n    "dashboard": "ERP System",\n    "name": "jkl"\n  },\n  {\n    "dashboard": "ERP System",\n    "name": "ghi"\n  },\n  {\n    "dashboard": "ERP System",\n    "name": "def"\n  },\n  {\n    "dashboard": "ERP System",\n    "name": "abc"\n  }\n]\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 21:22:49] "GET /recent-tasks HTTP/1.1" 200 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/tasks/stats?view=daily
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/recent-tasks
+INFO:root:Response: 200 OK b''
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 21:23:41] "OPTIONS /recent-tasks HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 21:23:41] "OPTIONS /tasks/stats?view=daily HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/recent-tasks
+INFO:root:Request: GET http://127.0.0.1:5555/tasks/stats?view=daily
+INFO:root:Response: 200 OK b'{\n  "completed": 0,\n  "inProgress": 0,\n  "pending": 0\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 21:23:41] "GET /tasks/stats?view=daily HTTP/1.1" 200 -
+INFO:root:Response: 200 OK b'[\n  {\n    "dashboard": "ERP System",\n    "name": "mno"\n  },\n  {\n    "dashboard": "ERP System",\n    "name": "jkl"\n  },\n  {\n    "dashboard": "ERP System",\n    "name": "ghi"\n  },\n  {\n    "dashboard": "ERP System",\n    "name": "def"\n  },\n  {\n    "dashboard": "ERP System",\n    "name": "abc"\n  }\n]\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 21:23:41] "GET /recent-tasks HTTP/1.1" 200 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/dashboards
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 21:25:02] "OPTIONS /dashboards HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/dashboards
+INFO:root:Response: 200 OK b'[\n  {\n    "id": 1,\n    "project_name": "ERP System"\n  }\n]\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 21:25:02] "GET /dashboards HTTP/1.1" 200 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/dashboards/1/tasks
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 21:25:03] "OPTIONS /dashboards/1/tasks HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/dashboards/1/tasks
+INFO:root:Response: 200 OK b'[\n  {\n    "dashboard_id": 1,\n    "description": "ergrthtrre",\n    "due_date": "Fri, 28 Mar 2025 00:00:00 GMT",\n    "id": 1,\n    "priority": "high",\n    "status": "in_progress",\n    "title": "abc",\n    "user_id": 1\n  },\n  {\n    "dashboard_id": 1,\n    "description": "gergerggrbdbdfbv",\n    "due_date": "Thu, 27 Mar 2025 00:00:00 GMT",\n    "id": 2,\n    "priority": "low",\n    "status": "pending",\n    "title": "def",\n    "user_id": 1\n  },\n  {\n    "dashboard_id": 1,\n    "description": "ttrjtykityhdfvsfs",\n    "due_date": "Mon, 31 Mar 2025 00:00:00 GMT",\n    "id": 3,\n    "priority": "medium",\n    "status": "completed",\n    "title": "ghi",\n    "user_id": 1\n  },\n  {\n    "dashboard_id": 1,\n    "description": "htrjtyhsdcafweb",\n    "due_date": "Thu, 20 Mar 2025 00:00:00 GMT",\n    "id": 4,\n    "priority": "high",\n    "status": "pending",\n    "title": "jkl",\n    "user_id": 1\n  },\n  {\n    "dashboard_id": 1,\n    "description": "vsdvdfbhtfgjfgnfnhd",\n    "due_date": "Fri, 21 Mar 2025 00:00:00 GMT",\n    "id": 5,\n    "priority": "low",\n    "status": "in_progress",\n    "title": "mno",\n    "user_id": 1\n  }\n]\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 21:25:03] "GET /dashboards/1/tasks HTTP/1.1" 200 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/tasks/1/invite
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 21:25:19] "OPTIONS /tasks/1/invite HTTP/1.1" 200 -
+INFO:root:Request: POST http://127.0.0.1:5555/tasks/1/invite
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 21:25:22] "[35m[1mPOST /tasks/1/invite HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/home/coleins/documents/development/phase-5/TaskMaster-App-Capstone-Project/server/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 138-170-700
+INFO:werkzeug: * Detected change in '/home/coleins/documents/development/phase-5/TaskMaster-App-Capstone-Project/server/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 138-170-700
+INFO:werkzeug: * Detected change in '/home/coleins/documents/development/phase-5/TaskMaster-App-Capstone-Project/server/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 138-170-700
+INFO:root:Request: GET http://127.0.0.1:5555/
+INFO:root:Response: 200 OK b'<h2>Hello, Flask is running!</h2>'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:39:29] "GET / HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/
+INFO:root:Response: 200 OK b'<h2>Hello, Flask is running!</h2>'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:39:31] "GET / HTTP/1.1" 200 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/dashboards/1/tasks
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:39:37] "OPTIONS /dashboards/1/tasks HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/dashboards/1/tasks
+INFO:root:Response: 422 UNPROCESSABLE ENTITY b'{\n  "msg": "Signature verification failed"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:39:37] "[31m[1mGET /dashboards/1/tasks HTTP/1.1[0m" 422 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/tasks/stats?view=daily
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/recent-tasks
+INFO:root:Response: 200 OK b''
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:39:49] "OPTIONS /tasks/stats?view=daily HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:39:49] "OPTIONS /recent-tasks HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/tasks/stats?view=daily
+INFO:root:Response: 422 UNPROCESSABLE ENTITY b'{\n  "msg": "Signature verification failed"\n}\n'
+INFO:root:Request: GET http://127.0.0.1:5555/recent-tasks
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:39:49] "[31m[1mGET /tasks/stats?view=daily HTTP/1.1[0m" 422 -
+INFO:root:Response: 422 UNPROCESSABLE ENTITY b'{\n  "msg": "Signature verification failed"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:39:49] "[31m[1mGET /recent-tasks HTTP/1.1[0m" 422 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/dashboards
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:40:06] "OPTIONS /dashboards HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/dashboards
+INFO:root:Response: 422 UNPROCESSABLE ENTITY b'{\n  "msg": "Signature verification failed"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:40:06] "[31m[1mGET /dashboards HTTP/1.1[0m" 422 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/dashboards
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:40:16] "OPTIONS /dashboards HTTP/1.1" 200 -
+INFO:root:Request: POST http://127.0.0.1:5555/dashboards
+INFO:root:Response: 422 UNPROCESSABLE ENTITY b'{\n  "msg": "Signature verification failed"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:40:16] "[31m[1mPOST /dashboards HTTP/1.1[0m" 422 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/dashboards
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:40:25] "OPTIONS /dashboards HTTP/1.1" 200 -
+INFO:root:Request: POST http://127.0.0.1:5555/dashboards
+INFO:root:Response: 422 UNPROCESSABLE ENTITY b'{\n  "msg": "Signature verification failed"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:40:25] "[31m[1mPOST /dashboards HTTP/1.1[0m" 422 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/dashboards
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:40:32] "OPTIONS /dashboards HTTP/1.1" 200 -
+INFO:root:Request: POST http://127.0.0.1:5555/dashboards
+INFO:root:Response: 422 UNPROCESSABLE ENTITY b'{\n  "msg": "Signature verification failed"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:40:32] "[31m[1mPOST /dashboards HTTP/1.1[0m" 422 -
+INFO:root:Request: POST http://127.0.0.1:5555/dashboards
+INFO:root:Response: 422 UNPROCESSABLE ENTITY b'{\n  "msg": "Signature verification failed"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:40:34] "[31m[1mPOST /dashboards HTTP/1.1[0m" 422 -
+INFO:root:Request: POST http://127.0.0.1:5555/dashboards
+INFO:root:Response: 422 UNPROCESSABLE ENTITY b'{\n  "msg": "Signature verification failed"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:40:34] "[31m[1mPOST /dashboards HTTP/1.1[0m" 422 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/recent-tasks
+INFO:root:Response: 200 OK b''
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/tasks/stats?view=daily
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:40:39] "OPTIONS /recent-tasks HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:40:39] "OPTIONS /tasks/stats?view=daily HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/tasks/stats?view=daily
+INFO:root:Request: GET http://127.0.0.1:5555/recent-tasks
+INFO:root:Response: 422 UNPROCESSABLE ENTITY b'{\n  "msg": "Signature verification failed"\n}\n'
+INFO:root:Response: 422 UNPROCESSABLE ENTITY b'{\n  "msg": "Signature verification failed"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:40:39] "[31m[1mGET /recent-tasks HTTP/1.1[0m" 422 -
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:40:39] "[31m[1mGET /tasks/stats?view=daily HTTP/1.1[0m" 422 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/dashboards/1/tasks
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:40:40] "OPTIONS /dashboards/1/tasks HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/dashboards/1/tasks
+INFO:root:Response: 422 UNPROCESSABLE ENTITY b'{\n  "msg": "Signature verification failed"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:40:40] "[31m[1mGET /dashboards/1/tasks HTTP/1.1[0m" 422 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/dashboards
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:40:40] "OPTIONS /dashboards HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/dashboards
+INFO:root:Response: 422 UNPROCESSABLE ENTITY b'{\n  "msg": "Signature verification failed"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:40:40] "[31m[1mGET /dashboards HTTP/1.1[0m" 422 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/recent-tasks
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:40:44] "OPTIONS /recent-tasks HTTP/1.1" 200 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/tasks/stats?view=daily
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:40:44] "OPTIONS /tasks/stats?view=daily HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/recent-tasks
+INFO:root:Response: 422 UNPROCESSABLE ENTITY b'{\n  "msg": "Signature verification failed"\n}\n'
+INFO:root:Request: GET http://127.0.0.1:5555/tasks/stats?view=daily
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:40:44] "[31m[1mGET /recent-tasks HTTP/1.1[0m" 422 -
+INFO:root:Response: 422 UNPROCESSABLE ENTITY b'{\n  "msg": "Signature verification failed"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:40:44] "[31m[1mGET /tasks/stats?view=daily HTTP/1.1[0m" 422 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/login
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:41:21] "OPTIONS /login HTTP/1.1" 200 -
+INFO:root:Request: POST http://127.0.0.1:5555/login
+INFO:root:Response: 200 OK b'{\n  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0MjQxNjg4MywianRpIjoiZWQyNzNhMTItZTQ1Ny00MmU0LThmNDktZGM4MDJmMTgxMzI3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzQyNDE2ODgzLCJjc3JmIjoiMjJlYzc2YTctOGZiNy00NzZiLThjZDgtMTljNWI5NGUyMzQzIiwiZXhwIjoxNzQyNTAzMjgzfQ.VR_n9BuaM3h3mx-PBwyyNwwRXKgTV41CdJ1fbgn6TLc"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:41:23] "POST /login HTTP/1.1" 200 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/recent-tasks
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:41:25] "OPTIONS /recent-tasks HTTP/1.1" 200 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/tasks/stats?view=daily
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:41:25] "OPTIONS /tasks/stats?view=daily HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/recent-tasks
+INFO:root:Request: GET http://127.0.0.1:5555/tasks/stats?view=daily
+INFO:root:Response: 200 OK b'{\n  "completed": 0,\n  "inProgress": 0,\n  "pending": 0\n}\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:41:25] "GET /tasks/stats?view=daily HTTP/1.1" 200 -
+INFO:root:Response: 200 OK b'[\n  {\n    "dashboard": "ERP System",\n    "name": "mno"\n  },\n  {\n    "dashboard": "ERP System",\n    "name": "jkl"\n  },\n  {\n    "dashboard": "ERP System",\n    "name": "ghi"\n  },\n  {\n    "dashboard": "ERP System",\n    "name": "def"\n  },\n  {\n    "dashboard": "ERP System",\n    "name": "abc"\n  }\n]\n'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:41:25] "GET /recent-tasks HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5555
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 138-170-700
+INFO:root:Request: GET http://127.0.0.1:5555/
+INFO:root:Response: 200 OK b'<h2>Hello, Flask is running!</h2>'
+INFO:werkzeug:127.0.0.1 - - [19/Mar/2025 23:57:20] "GET / HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/coleins/documents/development/phase-5/TaskMaster-App-Capstone-Project/server/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 138-170-700
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5555
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 333-445-335
+INFO:root:Request: GET http://127.0.0.1:5555/
+INFO:root:Response: 200 OK b'<h2>Hello, Flask is running!</h2>'
+INFO:werkzeug:127.0.0.1 - - [20/Mar/2025 20:23:14] "GET / HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/favicon.ico
+INFO:root:Response: 404 NOT FOUND b'{\n  "message": "Resource not found"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [20/Mar/2025 20:23:15] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/login
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [20/Mar/2025 20:29:03] "OPTIONS /login HTTP/1.1" 200 -
+INFO:root:Request: POST http://127.0.0.1:5555/login
+INFO:root:Response: 200 OK b'{\n  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0MjQ5MTc0NSwianRpIjoiNTRmODk0NjgtOTlmZS00NDYxLTkyMzMtMjQ2YzExZmFhNzQ3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzQyNDkxNzQ1LCJjc3JmIjoiMTJmZGJlODAtMWQxOC00MDQyLTk3MGQtNDU1ZmE0OGI2M2ZjIiwiZXhwIjoxNzQyNTc4MTQ1fQ.bvcThzCJixSa7MNSw9YIrLBvsBD5Pji5nbCqENxA6-U"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [20/Mar/2025 20:29:05] "POST /login HTTP/1.1" 200 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/recent-tasks
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [20/Mar/2025 20:29:07] "OPTIONS /recent-tasks HTTP/1.1" 200 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/tasks/stats?view=daily
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [20/Mar/2025 20:29:07] "OPTIONS /tasks/stats?view=daily HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/recent-tasks
+INFO:root:Request: GET http://127.0.0.1:5555/tasks/stats?view=daily
+INFO:root:Response: 200 OK b'[\n  {\n    "dashboard": "ERP System",\n    "name": "mno"\n  },\n  {\n    "dashboard": "ERP System",\n    "name": "jkl"\n  },\n  {\n    "dashboard": "ERP System",\n    "name": "ghi"\n  },\n  {\n    "dashboard": "ERP System",\n    "name": "def"\n  },\n  {\n    "dashboard": "ERP System",\n    "name": "abc"\n  }\n]\n'
+INFO:root:Response: 200 OK b'{\n  "completed": 0,\n  "inProgress": 0,\n  "pending": 0\n}\n'
+INFO:werkzeug:127.0.0.1 - - [20/Mar/2025 20:29:07] "GET /recent-tasks HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Mar/2025 20:29:07] "GET /tasks/stats?view=daily HTTP/1.1" 200 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/recent-tasks
+INFO:root:Response: 200 OK b''
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/tasks/stats?view=daily
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [20/Mar/2025 20:38:19] "OPTIONS /recent-tasks HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Mar/2025 20:38:19] "OPTIONS /tasks/stats?view=daily HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/recent-tasks
+INFO:root:Request: GET http://127.0.0.1:5555/tasks/stats?view=daily
+INFO:root:Response: 200 OK b'[\n  {\n    "dashboard": "ERP System",\n    "name": "mno"\n  },\n  {\n    "dashboard": "ERP System",\n    "name": "jkl"\n  },\n  {\n    "dashboard": "ERP System",\n    "name": "ghi"\n  },\n  {\n    "dashboard": "ERP System",\n    "name": "def"\n  },\n  {\n    "dashboard": "ERP System",\n    "name": "abc"\n  }\n]\n'
+INFO:werkzeug:127.0.0.1 - - [20/Mar/2025 20:38:19] "GET /recent-tasks HTTP/1.1" 200 -
+INFO:root:Response: 200 OK b'{\n  "completed": 0,\n  "inProgress": 0,\n  "pending": 0\n}\n'
+INFO:werkzeug:127.0.0.1 - - [20/Mar/2025 20:38:19] "GET /tasks/stats?view=daily HTTP/1.1" 200 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/dashboards
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [20/Mar/2025 20:38:31] "OPTIONS /dashboards HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/dashboards
+INFO:root:Response: 200 OK b'[\n  {\n    "id": 1,\n    "project_name": "ERP System"\n  }\n]\n'
+INFO:werkzeug:127.0.0.1 - - [20/Mar/2025 20:38:31] "GET /dashboards HTTP/1.1" 200 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/dashboards/1/tasks
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [20/Mar/2025 20:38:33] "OPTIONS /dashboards/1/tasks HTTP/1.1" 200 -
+INFO:root:Request: GET http://127.0.0.1:5555/dashboards/1/tasks
+INFO:root:Response: 200 OK b'[\n  {\n    "dashboard_id": 1,\n    "description": "ergrthtrre",\n    "due_date": "Fri, 28 Mar 2025 00:00:00 GMT",\n    "id": 1,\n    "priority": "high",\n    "status": "in_progress",\n    "title": "abc",\n    "user_id": 1\n  },\n  {\n    "dashboard_id": 1,\n    "description": "gergerggrbdbdfbv",\n    "due_date": "Thu, 27 Mar 2025 00:00:00 GMT",\n    "id": 2,\n    "priority": "low",\n    "status": "pending",\n    "title": "def",\n    "user_id": 1\n  },\n  {\n    "dashboard_id": 1,\n    "description": "ttrjtykityhdfvsfs",\n    "due_date": "Mon, 31 Mar 2025 00:00:00 GMT",\n    "id": 3,\n    "priority": "medium",\n    "status": "completed",\n    "title": "ghi",\n    "user_id": 1\n  },\n  {\n    "dashboard_id": 1,\n    "description": "htrjtyhsdcafweb",\n    "due_date": "Thu, 20 Mar 2025 00:00:00 GMT",\n    "id": 4,\n    "priority": "high",\n    "status": "pending",\n    "title": "jkl",\n    "user_id": 1\n  },\n  {\n    "dashboard_id": 1,\n    "description": "vsdvdfbhtfgjfgnfnhd",\n    "due_date": "Fri, 21 Mar 2025 00:00:00 GMT",\n    "id": 5,\n    "priority": "low",\n    "status": "in_progress",\n    "title": "mno",\n    "user_id": 1\n  }\n]\n'
+INFO:werkzeug:127.0.0.1 - - [20/Mar/2025 20:38:33] "GET /dashboards/1/tasks HTTP/1.1" 200 -
+INFO:root:Request: OPTIONS http://127.0.0.1:5555/tasks/1/invite
+INFO:root:Response: 200 OK b''
+INFO:werkzeug:127.0.0.1 - - [20/Mar/2025 20:38:59] "OPTIONS /tasks/1/invite HTTP/1.1" 200 -
+INFO:root:Request: POST http://127.0.0.1:5555/tasks/1/invite
+INFO:root:Response: 200 OK b'{\n  "message": "Invitation sent to collinsngetichk@gmail.com"\n}\n'
+INFO:werkzeug:127.0.0.1 - - [20/Mar/2025 20:39:06] "POST /tasks/1/invite HTTP/1.1" 200 -
