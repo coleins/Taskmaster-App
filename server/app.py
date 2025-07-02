@@ -16,8 +16,8 @@ from flask_mail import Mail, Message
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": ["http://localhost:3000"]}})
-
+# CORS(app, resources={r"/*": {"origins": ["http://localhost:3000"]}})
+@cross_origin(origins=["https://task-master-app-capstone-project.vercel.app"], supports_credentials=True)
 # Configuration
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("SQLALCHEMY_DATABASE_URI")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = os.getenv("SQLALCHEMY_TRACK_MODIFICATIONS") == "True"
